@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="AzulMedio">#3232CD</color>
+    <color name="Preto">#000000</color>
+    <color name="AzulClaro">#836FFF</color>
+    <color name="Vermelho">#8B0000</color>
+    <color name="VermelhoSangue">#B22222</color>
+    <color name="Amarelo">#FFFF00</color>
+    <color name="Branco">#FFFFFF</color>
+
+</resources>

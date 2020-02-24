@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Horarios.Horarios">
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnerDiasDaSemana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
+
+    <ListView
+        android:id="@+id/listaHorarios"
+        android:layout_below="@id/spinnerDiasDaSemana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnAdicionaraula"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
+
+    <Button
+        android:id="@+id/btnAdicionaraula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Adicionar aula"
+        android:backgroundTint="@color/AzulClaro"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/Branco"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="5dp" />
+
+
+</android.widget.RelativeLayout>

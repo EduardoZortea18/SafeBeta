@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Gerenciar_Conta.GerenciarConta"
+    android:background="@color/AzulMedio">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarGerConta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/AzulMedio"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fotoDePerfil"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:elevation="6dp"
+        android:src="@drawable/icone2"
+        app:civ_border_width="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="8dp"
+        android:layout_below="@id/toolbarGerConta"
+        android:clickable="true"/>
+
+    <ListView
+        android:id="@+id/listaInformacoesUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/fotoDePerfil"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
+
+
+</android.widget.RelativeLayout>

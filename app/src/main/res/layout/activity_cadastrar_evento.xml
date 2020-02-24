@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Agenda_de_eventos.CadastrarEvento">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarAg2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/AzulMedio"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnSalvarEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="29dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:backgroundTint="@color/AzulMedio"
+        app:srcCompat="@drawable/ic_done_black_24dp" />
+
+    <EditText
+        android:id="@+id/txtTituloEvento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:layout_below="@id/toolbarAg2"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Nome do evento"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <Spinner
+        android:id="@+id/spinnerTipoEvento"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/txtTituloEvento"
+        android:layout_marginTop="12dp" />
+
+    <TextView
+        android:id="@+id/txtDataEvento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:layout_below="@id/buttonEscolherData"
+        android:layout_marginTop="-49dp"
+        android:layout_toEndOf="@id/buttonEscolherData"
+        android:gravity="center_vertical"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <ImageButton
+        android:id="@+id/buttonEscolherData"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/spinnerTipoEvento"
+        android:layout_marginTop="15dp"
+        android:background="#00FFFFFF"
+        app:srcCompat="@drawable/ic_date_range_black_24dp" />
+
+    <TextView
+        android:id="@+id/txtHoraEvento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:layout_below="@id/txtDataEvento"
+        android:layout_marginTop="11dp"
+        android:layout_toEndOf="@id/buttonEscolherHora"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <ImageButton
+        android:id="@+id/buttonEscolherHora"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/buttonEscolherData"
+        android:layout_marginTop="12dp"
+        android:background="#00FFFFFF"
+        app:srcCompat="@drawable/ic_schedule_black_24dp" />
+
+    <EditText
+        android:id="@+id/txtDescricaoEvento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:layout_below="@id/buttonEscolherHora"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Descrição( Opcional)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <Spinner
+        android:id="@+id/spinnerMateriaevento"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/txtTituloEvento"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/spinnerTipoEvento" />
+
+</android.widget.RelativeLayout>

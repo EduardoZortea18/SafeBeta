@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TelaEditorTexto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarBn2"
+        android:layout_width="match_parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_height="wrap_content"
+        android:background="@color/AzulMedio"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:title="SAFE"
+
+        />
+
+
+    <EditText
+        android:id="@+id/txtNota"
+        style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:bufferType="normal"
+        android:ems="10"
+        android:layout_below="@id/toolbarBn2"
+        android:gravity="top|left"
+        android:inputType="textUri|textLongMessage|textMultiLine"
+        android:textAlignment="viewStart"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarBn2"
+        tools:layout_editor_absoluteX="-7dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="29dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:backgroundTint="@color/AzulMedio"
+        app:srcCompat="@drawable/ic_done_black_24dp" />
+
+
+</android.widget.RelativeLayout>

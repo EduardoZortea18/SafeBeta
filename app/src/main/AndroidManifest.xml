@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.safe_v02">
+
+    <application
+        android:name=".Notificacoes.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_safe"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_safe_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Agenda_de_eventos.InfoEvento"
+            android:parentActivityName=".Agenda_de_eventos.MeusEventos"></activity>
+        <activity
+            android:name=".Materias_e_notas.TelaNotas"
+            android:parentActivityName=".Materias_e_notas.TelaMaterias" />
+        <activity
+            android:name=".Materias_e_notas.TelaMaterias"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Gerenciar_Conta.GerenciarConta"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Suporte.Suporte"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Agenda_de_eventos.CadastrarEvento"
+            android:parentActivityName=".Agenda_de_eventos.MeusEventos" />
+        <activity
+            android:name=".Agenda_de_eventos.MeusEventos"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".Ferramentas_de_calculo.InicioCalculadora"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Bloco_de_notas.TelaEditorTexto"
+            android:parentActivityName=".Bloco_de_notas.TelaAnotacoes" />
+        <activity
+            android:name=".Bloco_de_notas.TelaAnotacoes"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".TelaDeAbertura.StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

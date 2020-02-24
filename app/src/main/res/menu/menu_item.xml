@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigationView">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/agenda_de_eventos"
+            android:icon="@drawable/ic_event_black_24dp"
+            android:title="Agenda de eventos"/>
+        <item
+            android:id="@+id/anotacoes"
+            android:icon="@drawable/ic_note_add_black_24dp"
+            android:title="Anotações"/>
+
+        <item
+            android:id="@+id/frrramentas_de_calculo"
+            android:icon="@drawable/calculator"
+            android:title="Ferramentas de cálculo"/>
+
+        <item
+            android:id="@+id/materias"
+            android:icon="@drawable/ic_school_black_24dp"
+            android:title="Materias"/>
+
+    </group>
+
+    <item android:title="Outras opções">
+        <menu>
+            <item
+                android:id="@+id/Conta"
+                android:icon="@drawable/ic_account_circle_black_24dp"
+                android:title="Gerenciar conta"/>
+            <item
+                android:id="@+id/Suporte"
+                android:icon="@drawable/ic_help_outline_black_24dp"
+                android:title="Info e suporte"/>
+        </menu>
+    </item>
+</menu>

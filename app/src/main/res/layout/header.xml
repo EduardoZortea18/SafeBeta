@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_gravity="left"
+    android:background="@drawable/fundo_drawer"
+    android:orientation="vertical"
+    android:paddingLeft="15dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilePic"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:elevation="6dp"
+            android:src="@drawable/icone2"
+            app:civ_border_width="0dp" />
+
+        <TextView
+            android:id="@+id/txtUserId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profilePic"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Nome de usuário"
+            android:textColor="#fff"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtUserMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtUserId"
+            android:layout_marginTop="3dp"
+            android:gravity="center"
+            android:text="Email"
+            android:textColor="#fff"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtUserCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/profilePic"
+            android:gravity="center"
+            android:text="O que esta cursando"
+            android:textColor="#fff"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtUserInstitution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtUserCourse"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/profilePic"
+            android:gravity="center"
+            android:text="Nome da instituição de ensino"
+            android:textAlignment="textStart"
+            android:textColor="#fff"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

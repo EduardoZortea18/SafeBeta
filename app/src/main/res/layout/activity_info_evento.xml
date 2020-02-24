@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Agenda_de_eventos.InfoEvento">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarInfoEvento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Vermelho"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
+
+    <TextView
+        android:id="@+id/txtInfoEvento1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarInfoEvento"
+        android:background="@color/Vermelho"
+        android:text="Titulo do  evento"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/Branco"
+        android:textSize="26dp" />
+
+    <TextView
+        android:id="@+id/txtInfoEvento2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@id/txtInfoEvento1"
+        android:background="@color/Vermelho"
+        android:textColor="@color/Branco"
+        android:text="Data: Horario:"
+        />
+
+    <TextView
+        android:id="@+id/txtInfoEvento3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtInfoEvento2"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Tipo:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <TextView
+        android:id="@+id/txtInfoEvento4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@id/txtInfoEvento3"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Matéria:"
+        />
+
+    <TextView
+        android:id="@+id/txtInfoEvento5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@id/txtInfoEvento4"
+        android:layout_margin="10dp"
+        android:text="Descrção:"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnEditarEvento"
+        android:src="@drawable/ic_edit_24dp"
+        android:backgroundTint="@color/AzulMedio"
+        android:layout_below="@id/txtInfoEvento1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        />
+
+
+</android.widget.RelativeLayout>

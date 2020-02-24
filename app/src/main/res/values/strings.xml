@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">S.A.F.E</string>
+    <string name="drawerOpen">drawerOpen</string>
+    <string name="drawerClose">drawerClose</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="operacoes_array">
+        <item>Selecione uma opção</item>
+        <item>Equação do 2º grau</item>
+        <item>Regra de três simples</item>
+
+    </string-array>
+
+    <string-array name="tipos_de_eventos_array">
+        <item>Tipo</item>
+        <item>Prova</item>
+        <item>Trabalho</item>
+        <item>Seminário</item>
+    </string-array>
+
+    <string-array name="tipos_de_media_array">
+        <item>Tipo de média</item>
+        <item>Simples</item>
+        <item>Ponderada</item>
+    </string-array>
+
+    <string-array name="horarios_array">
+        <item>Selecione o dia</item>
+        <item>Segunda-feira</item>
+        <item>Terça-feira</item>
+        <item>Quarta-feira</item>
+        <item>Quinta-feira</item>
+        <item>Sexta-feira</item>
+    </string-array>
+
+    <string-array name="opcoes_array">
+        <item>Excluir</item>
+        <item>Modificar</item>
+    </string-array>
+
+    <string name="Info_suporte">
+        Aplicativo desenvolvido por:\n
+        Eduardo Paulo Wagner;\n
+        Eduardo Zortea;\n
+        João Vitor Silveira Branco;\n
+        Luis Gustavo dos Santos;\n
+        \n
+        Para tirar dúvidas entre em contato com algum destes alunos.
+    </string>
+</resources>

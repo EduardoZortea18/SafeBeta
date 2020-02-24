@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:paddingEnd="6dp">
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerNomeAula"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtInicioDaAula"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@id/spinnerNomeAula"
+        android:text="Horário de início"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTerminoDaAula"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@id/txtInicioDaAula"
+        android:text="Horário de término"/>
+
+</RelativeLayout>
