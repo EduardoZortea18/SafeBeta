@@ -49,14 +49,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Setando a toolbar que sera utilizada no layout
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        //Setando os botôes de "Horarios" e "Estatísticas"
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
+        //Setando a navigationView,drawer e gestos de abrir e fechar drawer
         navigationView = findViewById(R.id.navigationView);
         drawerLayout = findViewById(R.id.drawer);
         toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.drawerOpen,R.string.drawerClose);
@@ -64,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         toggle.syncState();
 
+
+        //Setando as informações no drawer
         View hView =  navigationView.getHeaderView(0);
         nav_user = (TextView)hView.findViewById(R.id.txtUserId);
         nav_email = (TextView)hView.findViewById(R.id.txtUserMail);
@@ -71,13 +76,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nav_institution = (TextView)hView.findViewById(R.id.txtUserInstitution);
         nav_photo = (CircleImageView)hView.findViewById(R.id.profilePic);
 
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.safe_v02", Context.MODE_PRIVATE);
-        boolean primeiroUso = sharedPreferences.getBoolean("primeiroUso",true);
-
-        if(primeiroUso==true){
-            mostrarBoasVindas();
-        }
-
+        //Verifica se o usuário está abrindo o app pela primeira vez
+        verificaPrimeiroUso();
+        //Carrega as informações do usuário no drawer
         carregarPerfil();
 
         //Determina um fragmento inicial para o container da main activity
@@ -164,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onResume();
     }
 
+    //carrega as informações dousuário
     public void carregarPerfil(){
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.safe_v02", Context.MODE_PRIVATE);
         String SpNome = sharedPreferences.getString("nome", null);
@@ -190,6 +192,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    //Atualiza as informações do usuários e as atualiza no drawer
     public void atualizarPerfil(){
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.safe_v02", Context.MODE_PRIVATE);
         String SpNome = sharedPreferences.getString("nome", null);
@@ -218,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    // Base 64 para bitmap
+    // Converte a imagem de usuário que é salva em integer de base 64 para bitmap
     public static Bitmap decodificarBase64(String input) {
         byte[] decodedByte = Base64.decode(input, 0);
         return BitmapFactory
@@ -226,21 +229,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     //Verifica se é o primeirouso do app e mostra uma mensagem para o usuario cadastrar suas informações
-    public void mostrarBoasVindas(){
-        new AlertDialog.Builder(this)
-                .setTitle("Bem vindo(a) ao S.A.F.E!!")
-                .setMessage("Vamos cadastrar suas informações na tela de gerenciamento de conta.")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent ger_conta = new Intent(MainActivity.this, GerenciarConta.class);
-                        startActivity(ger_conta);
-                        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.safe_v02", Context.MODE_PRIVATE);
-                        sharedPreferences.edit().putBoolean("primeiroUso",false).apply();
-                        dialog.dismiss();
-                    }
-                })
-                .create().show();
+    public void verificaPrimeiroUso(){
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.safe_v02", Context.MODE_PRIVATE);
+        boolean primeiroUso = sharedPreferences.getBoolean("primeiroUso",true);
+
+        if(primeiroUso==true){
+            new AlertDialog.Builder(this)
+                    .setTitle("Bem vindo(a) ao S.A.F.E!!")
+                    .setMessage("Vamos cadastrar suas informações na tela de gerenciamento de conta.")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent ger_conta = new Intent(MainActivity.this, GerenciarConta.class);
+                            startActivity(ger_conta);
+                            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.safe_v02", Context.MODE_PRIVATE);
+                            sharedPreferences.edit().putBoolean("primeiroUso",false).apply();
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        }
     }
 
 }

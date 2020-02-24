@@ -41,16 +41,21 @@ public class CriarNotaDialog extends AppCompatDialogFragment {
       View view = getActivity().getLayoutInflater().inflate(R.layout.layout_criar_nota, null);
       txtNota = (EditText)view.findViewById(R.id.txtNotaMateria);
       txtPesoNota = (EditText)view.findViewById(R.id.txtPesoNota);
+      //Verifica se a matéria na qual o usuário quer salvar a nota possui o tipo de média simples ou ponderada
+      //Caso for simples não será necessário digitar o peso da nota. Então a caixa de texto é desabilitada
       if (tipoDeMedia.equalsIgnoreCase("simples")) {
          txtPesoNota.setHint("Peso não necessário");
          txtPesoNota.setEnabled(false);
       }
 
       builder.setView(view).setTitle("Criar nota").setNegativeButton("CANCELAR", new OnClickListener() {
-         public void onClick(DialogInterface var1, int var2) {
+         public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
          }
       }).setPositiveButton("CRIAR", new OnClickListener() {
          public void onClick(DialogInterface dialog, int which) {
+            //Verifica se o usuário preencheu todas as informações corretamente e em segudia,
+            //retorna a nota para a classe TelaNotas através do listener(interface)
                if (tipoDeMedia.equalsIgnoreCase("simples")) {
                   if (txtNota.getText().toString().length() <= 0) {
                      Toast.makeText(getActivity().getApplicationContext(), "Campo de nota vazio", 0).show();
@@ -87,6 +92,7 @@ public class CriarNotaDialog extends AppCompatDialogFragment {
       return builder.create();
    }
 
+   //Interface que retorna a nota para a classe TelaNotas
    public interface DialogCriarNotaListener {
       void salvarNota(Double nota);
    }

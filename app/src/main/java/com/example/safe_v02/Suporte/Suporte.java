@@ -16,11 +16,11 @@ public class Suporte extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suporte);
 
+        //Configura a toolbar da tela de Info e suporte
         toolbar = (Toolbar)findViewById(R.id.toolbarSuporte);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Suporte");
-
 
     }
 }

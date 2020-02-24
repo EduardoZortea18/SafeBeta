@@ -19,6 +19,8 @@ public class StartActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
+                //Mostra a tela de abertura até o tempo estipulado acabar e em segudida,
+                //abre a tela inicial do app
                 Intent StartIntent = new Intent(StartActivity.this, MainActivity.class);
                 startActivity(StartIntent);
                 finish();
