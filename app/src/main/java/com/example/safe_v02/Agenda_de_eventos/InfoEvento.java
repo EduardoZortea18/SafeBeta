@@ -27,7 +27,7 @@ public class InfoEvento extends AppCompatActivity {
          txtInfoEvento1.setText(evento.getTituloEvento());
          txtInfoEvento2.setText(evento.getDataEvento()+" às "+evento.getHorarioevento());
          txtInfoEvento3.setText("Tipo: "+evento.getTipoEvento());
-         txtInfoEvento4.setText("Matéria: "+evento.getTipoEvento());
+         txtInfoEvento4.setText("Matéria: "+evento.getMateriaEvento());
          if(evento.getDescricao()!=null){
             txtInfoEvento5.setText("Descrição: "+evento.getDescricao());
          }
