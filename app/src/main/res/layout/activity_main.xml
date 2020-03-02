@@ -69,7 +69,8 @@
         app:headerLayout="@layout/header"
         android:background="@color/cardview_light_background"
         android:layout_gravity="start"
-        app:itemTextColor="@color/Preto"/>
+        app:itemTextColor="@color/Preto">
+    </com.google.android.material.navigation.NavigationView>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

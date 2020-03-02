@@ -8,7 +8,7 @@
         android:id="@+id/txtNomeMateria"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:hint="Nome da mtéria"
+        android:hint="Nome da matéria"
         />
 
     <Spinner

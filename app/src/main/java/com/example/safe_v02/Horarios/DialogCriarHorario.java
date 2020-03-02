@@ -96,7 +96,7 @@ public class DialogCriarHorario extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String materia,horaInicio,horaTermino;
-                        if((spinnerNomeAula.getSelectedItem().toString()!="Matéria")&&(txtInicioDaAula.getText().toString()!="Horário de início")&&(txtTerminoDaAula.getText().toString()!="Horário de término")){
+                        if((spinnerNomeAula.getSelectedItem().toString()!="Matéria")&&(txtInicioDaAula.getText().toString().equalsIgnoreCase("horário de inicio")==false)&&(txtTerminoDaAula.getText().toString().equalsIgnoreCase("horário de término")==false)){
                             horaInicio=txtInicioDaAula.getText().toString();
                             horaTermino=txtTerminoDaAula.getText().toString();
                             materia = spinnerNomeAula.getSelectedItem().toString();

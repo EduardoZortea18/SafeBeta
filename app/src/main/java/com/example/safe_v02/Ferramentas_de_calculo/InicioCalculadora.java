@@ -37,9 +37,7 @@ public class InicioCalculadora extends AppCompatActivity implements AdapterView.
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Operacao.setAdapter(adapter);
 
-
         Operacao.setOnItemSelectedListener(this);
-
 
     }
 
