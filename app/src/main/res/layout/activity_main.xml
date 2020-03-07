@@ -13,17 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar"
-            app:menu="@menu/botton_navigation"
-            android:background="@color/AzulMedio"
-            android:theme="@style/Theme.Design.Light.NoActionBar">
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -52,12 +41,27 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/Branco" />
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabsInicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            app:tabMode="fixed"
+            app:tabIconTint="@color/Branco"
+            android:background="@color/AzulMedio"
+            app:tabSelectedTextColor="@color/Branco"
+            app:tabIndicatorColor="@color/Branco"
+            >
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pagerInicio"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/bottom_navigation">
-        </FrameLayout>
+            android:layout_below="@id/tabsInicio">
+        </androidx.viewpager.widget.ViewPager>
+
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView

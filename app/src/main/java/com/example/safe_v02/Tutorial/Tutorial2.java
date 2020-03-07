@@ -1,4 +1,4 @@
-package com.example.safe_v02;
+package com.example.safe_v02.Tutorial;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.safe_v02.R;
 
 
 public class Tutorial2 extends Fragment {

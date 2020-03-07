@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -28,8 +31,12 @@ import com.example.safe_v02.Gerenciar_Conta.GerenciarConta;
 import com.example.safe_v02.Estatisticas.Estatisticas;
 import com.example.safe_v02.Horarios.Horarios;
 import com.example.safe_v02.Suporte.Suporte;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -38,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
+    ViewPager pagerInicio;
+    PagerAdapter pagerAdapter;
+    TabLayout tabLayout;
     public static String horario;
     String nome_usuario="Nome de usuário",email_usuario="Email",curso_usuario="O que está cursando",instituicao_usuario="Nome da instituição de ensino";
     public static Bitmap foto_usuario;
@@ -55,9 +65,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        //Setando os botôes de "Horarios" e "Estatísticas"
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        //Configura o pagerAdapter e o tabLayout para trabalharem juntos
+        pagerInicio = (ViewPager)findViewById(R.id.pagerInicio);
+        List<Fragment> fragmentList = new ArrayList<>();
+        fragmentList.add(new Horarios());
+        fragmentList.add(new Estatisticas());
+        pagerAdapter = new SlidePagerAdapter(getSupportFragmentManager(),fragmentList);
+        pagerInicio.setAdapter(pagerAdapter);
+        tabLayout = (TabLayout)findViewById(R.id.tabsInicio);
+        tabLayout.setupWithViewPager(pagerInicio);
+        //Configura um icone para a posição 0 e 1, no caso horários e estatísticas respectivamente
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_horarios);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_estatisticas);
+
 
         //Setando a navigationView,drawer e gestos de abrir e fechar drawer
         navigationView = findViewById(R.id.navigationView);
@@ -81,36 +101,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Carrega as informações do usuário no drawer
         carregarPerfil();
 
-        //Determina um fragmento inicial para o container da main activity
-        if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, new Horarios()).commit();
-                    navigationView.setCheckedItem(R.id.home);
-        }
+
     }
 
-    // Verifica se um item da NavigationView foi selecionado e executa uma ação
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    switch (item.getItemId()){
-                        case R.id.Horarios:
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .replace(R.id.fragment_container, new Horarios()).commit();
-
-                            break;
-                        case R.id.Estatisticas:
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .replace(R.id.fragment_container, new Estatisticas()).commit();
-                            break;
-                    }
-                    return true;
-                }
-            };
+    public void selectTabItem(View v){
+        if(tabLayout.getSelectedTabPosition()==0){
+            pagerInicio.setCurrentItem(1);
+        }
+        else{
+            pagerInicio.setCurrentItem(2);
+        }
+    }
 
     //Fecha o drawer ao clicar no botão voltar
     @Override

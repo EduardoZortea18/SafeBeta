@@ -8,7 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.example.safe_v02.R;
-import com.example.safe_v02.Tutorial2;
+import com.example.safe_v02.SlidePagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;

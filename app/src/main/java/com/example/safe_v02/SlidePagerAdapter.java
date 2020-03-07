@@ -1,4 +1,4 @@
-package com.example.safe_v02.Tutorial;
+package com.example.safe_v02;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,4 +26,5 @@ public class SlidePagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return fragmentList.size();
     }
+
 }
