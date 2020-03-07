@@ -22,13 +22,13 @@
         android:id="@+id/txtNota"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:ems="10"
         android:layout_below="@id/toolbarBn2"
+        android:layout_marginTop="28dp"
+        android:ems="10"
         android:gravity="top|left"
         android:hint="Digite sua anotação aqui"
         android:inputType="textUri|textLongMessage|textMultiLine"
-        android:textAlignment="viewStart"
-        />
+        android:textAlignment="viewStart" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnSalvar"

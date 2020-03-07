@@ -3,9 +3,13 @@ package com.example.safe_v02.Suporte;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.safe_v02.R;
+import com.example.safe_v02.TelaDeAbertura.StartActivity;
+import com.example.safe_v02.Tutorial.MainTutorial;
 
 public class Suporte extends AppCompatActivity {
 
@@ -22,5 +26,10 @@ public class Suporte extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Suporte");
 
+    }
+
+    public void abrirTutorial(View v){
+        Intent intent = new Intent(this,MainTutorial.class);
+        startActivity(intent);
     }
 }

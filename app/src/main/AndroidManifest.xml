@@ -10,8 +10,10 @@
         android:roundIcon="@mipmap/ic_safe_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Agenda_de_eventos.InfoEvento"
-            android:parentActivityName=".Agenda_de_eventos.MeusEventos"></activity>
+        <activity android:name=".Tutorial.MainTutorial"></activity>
+        <activity
+            android:name=".Agenda_de_eventos.InfoEvento"
+            android:parentActivityName=".Agenda_de_eventos.MeusEventos" />
         <activity
             android:name=".Materias_e_notas.TelaNotas"
             android:parentActivityName=".Materias_e_notas.TelaMaterias" />
