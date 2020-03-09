@@ -3,13 +3,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tutorial.Tutorial2">
+    tools:context=".Tutorial.Tutorial2"
+    android:background="@color/AzulMedio">
 
     <TextView
+        android:id="@+id/txtTutorial2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Tutorial 2"
-        android:textColor="@color/Branco"/>
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/Branco"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAlignment="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="50dp"
+        android:text="Agora vamos cadastrar sua primeira matéria. A partir das matérias você poderá adicionar suas notas, criar horários de aula , eventos e também, ver suas estatísticas."
+        />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTutorialNomeMateria"
+        android:layout_below="@id/txtTutorial2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Nome da matéria"
+        android:textColor="@color/Branco"
+        android:foregroundTint="@color/Branco"
+        android:textColorHint="@color/Branco"
+        android:backgroundTint="@color/Branco"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerTutorialTipoMedia"
+        android:layout_below="@id/txtTutorialNomeMateria"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:foregroundTint="@color/Branco"
+        android:backgroundTint="@color/Branco"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTutorialQntdNotas"
+        android:layout_below="@id/spinnerTutorialTipoMedia"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Qntd de notas"
+        android:textColor="@color/Branco"
+        android:foregroundTint="@color/Branco"
+        android:textColorHint="@color/Branco"
+        android:backgroundTint="@color/Branco"
+        />
+
+    <Button
+        android:id="@+id/btnTutorial2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Próximo"
+        android:textColor="@color/Branco"/>
 </RelativeLayout>

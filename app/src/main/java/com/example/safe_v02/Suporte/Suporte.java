@@ -28,8 +28,4 @@ public class Suporte extends AppCompatActivity {
 
     }
 
-    public void abrirTutorial(View v){
-        Intent intent = new Intent(this,MainTutorial.class);
-        startActivity(intent);
-    }
 }

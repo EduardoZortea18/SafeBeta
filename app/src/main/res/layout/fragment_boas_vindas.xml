@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tutorial.BoasVindas"
+    android:background="@color/AzulMedio"
+    >
+
+    <TextView
+        android:id="@+id/txtBoasVindas1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bem vindo(a) ao S.A.F.E!!"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/Branco"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgBoasVindas"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txtBoasVindas1"
+        android:layout_marginTop="50dp"
+    />
+
+    <TextView
+        android:id="@+id/txtBoasVindas2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:text="@string/Boas_Vindas"
+        android:textColor="@color/Branco"
+        android:layout_below="@id/imgBoasVindas"
+        android:textAlignment="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        />
+
+    <Button
+        android:id="@+id/btnBoasVindas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@null"
+        android:text="Vamos lá"
+        android:textColor="@color/Branco" />
+</RelativeLayout>

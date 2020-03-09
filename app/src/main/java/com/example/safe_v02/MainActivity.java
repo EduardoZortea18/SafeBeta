@@ -31,6 +31,9 @@ import com.example.safe_v02.Gerenciar_Conta.GerenciarConta;
 import com.example.safe_v02.Estatisticas.Estatisticas;
 import com.example.safe_v02.Horarios.Horarios;
 import com.example.safe_v02.Suporte.Suporte;
+import com.example.safe_v02.Tutorial.BoasVindas;
+import com.example.safe_v02.Tutorial.MainTutorial;
+import com.example.safe_v02.Tutorial.Tutorial1;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
@@ -235,20 +238,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         boolean primeiroUso = sharedPreferences.getBoolean("primeiroUso",true);
 
         if(primeiroUso==true){
-            new AlertDialog.Builder(this)
-                    .setTitle("Bem vindo(a) ao S.A.F.E!!")
-                    .setMessage("Vamos cadastrar suas informações na tela de gerenciamento de conta.")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent ger_conta = new Intent(MainActivity.this, GerenciarConta.class);
-                            startActivity(ger_conta);
-                            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.safe_v02", Context.MODE_PRIVATE);
-                            sharedPreferences.edit().putBoolean("primeiroUso",false).apply();
-                            dialog.dismiss();
-                        }
-                    })
-                    .create().show();
+            Intent ger_conta = new Intent(MainActivity.this, MainTutorial.class);
+            startActivity(ger_conta);
+            sharedPreferences.edit().putBoolean("primeiroUso",false).apply();
         }
     }
 

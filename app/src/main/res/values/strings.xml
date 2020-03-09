@@ -49,4 +49,19 @@
         \n
         Para tirar dúvidas entre em contato com algum destes alunos.
     </string>
+
+    <string name="Boas_Vindas">
+        Olá, seja bem muito bem vindo(a) ao nosso aplicativo.
+       Nós da equipe do S.A.F.E estamos muito felizes por você ter escolhido usar
+       nosso aplicativo e por isso, separamos um pequeno tutorial para que
+       voce saiba como utilizar nossas ferramentas.\n
+       Aproveite o aplicativo.\n
+    </string>
+
+    <string name="tutorial3">
+        Na tela de início do app você poderá gerenciar seus horários de aula ou ver as estatísticas das matérias.\n
+       Ao clicar no icone no canto superior esquerdo da tela ou arrastar para direita a partir da margem esquerda da tela
+       você irá abrir o drawer de ferramentas do app onde estão as outras ferramentas.\n
+       Agora você pode começar a utilizar o aplicativo e desfrutar das ferramentas que disponibilizamos para você.\n
+    </string>
 </resources>
