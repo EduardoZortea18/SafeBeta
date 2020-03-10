@@ -50,7 +50,4 @@ public class Tutorial1 extends Fragment {
         });
         return view;
     }
-
-
-
 }

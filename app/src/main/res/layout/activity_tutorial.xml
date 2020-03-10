@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tutorial.MainTutorial"
-    android:background="@color/AzulMedio">
+    tools:context=".Tutorial.MainTutorial">
 
     <FrameLayout
         android:id="@+id/container_tutorial"

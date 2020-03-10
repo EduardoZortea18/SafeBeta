@@ -24,9 +24,5 @@ int cont=0;
                 .replace(R.id.container_tutorial, new BoasVindas()).commit();
     }
 
-    public  void finalizar(){
-        finish();
-    }
-
 
 }

@@ -1,6 +1,8 @@
 package com.example.safe_v02.Tutorial;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -23,7 +25,10 @@ public class Tutorial3 extends Fragment {
         btnTutorial3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences("com.example.safe_v02", Context.MODE_PRIVATE);
+                sharedPreferences.edit().putBoolean("primeiroUso",false).apply();
                 getActivity().finish();
+
             }
         });
         return view;

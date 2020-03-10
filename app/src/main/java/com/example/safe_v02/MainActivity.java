@@ -240,7 +240,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(primeiroUso==true){
             Intent ger_conta = new Intent(MainActivity.this, MainTutorial.class);
             startActivity(ger_conta);
-            sharedPreferences.edit().putBoolean("primeiroUso",false).apply();
         }
     }
 
