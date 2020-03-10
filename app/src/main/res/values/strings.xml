@@ -6,11 +6,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string-array name="operacoes_array">
-        <item>Selecione uma opção</item>
-        <item>Equação do 2º grau</item>
-        <item>Regra de três simples</item>
-
+    <string-array name="array_materias">
+        <item>Selecione uma matéria</item>
+        <item>Física</item>
+        <item>Matemática</item>
     </string-array>
 
     <string-array name="tipos_de_eventos_array">
@@ -38,6 +37,25 @@
     <string-array name="opcoes_array">
         <item>Excluir</item>
         <item>Modificar</item>
+    </string-array>
+
+    <string-array name="array_fisica">
+        <item>Selecione a operação</item>
+        <item>Calorimetria</item>
+        <item>Distância</item>
+        <item>Empuxo</item>
+        <item>eletricidade</item>
+        <item>Equação de Torricelli</item>
+        <item>MRU</item>
+        <item>Segunda lei de Newton</item>
+        <item>Velocidade das ondas</item>
+        <item>Velocidade média</item>
+    </string-array>
+
+    <string-array name="array_matematica">
+        <item>Selecione uma operação</item>
+        <item>Equação do 2º grau</item>
+        <item>Regra de três simples</item>
     </string-array>
 
     <string name="Info_suporte">

@@ -13,22 +13,29 @@
         android:background="@color/AzulMedio"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-
         />
 
     <Spinner
-        android:id="@+id/Operacao"
+        android:id="@+id/SpinnerMaterias_calculos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbarCalc"
-        android:layout_alignParentTop="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="97dp" />
+        android:layout_marginTop="20dp" />
+
+    <Spinner
+        android:id="@+id/SpinnerOperacoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/SpinnerMaterias_calculos"
+        android:layout_marginTop="15dp"
+        />
 
     <FrameLayout
         android:id="@+id/container_calculadora"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/Operacao"></FrameLayout>
+        android:layout_below="@id/SpinnerOperacoes"
+        android:layout_margin="10dp">
+    </FrameLayout>
 
 </android.widget.RelativeLayout>
