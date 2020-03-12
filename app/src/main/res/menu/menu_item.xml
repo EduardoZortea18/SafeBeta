@@ -19,6 +19,12 @@
             android:title="Ferramentas de cálculo"/>
 
         <item
+            android:id="@+id/GoogleTradutor"
+            android:icon="@drawable/ic_g_translate_black_24dp"
+            android:title="Google Tradutor"
+            />
+
+        <item
             android:id="@+id/materias"
             android:icon="@drawable/ic_school_black_24dp"
             android:title="Materias"/>

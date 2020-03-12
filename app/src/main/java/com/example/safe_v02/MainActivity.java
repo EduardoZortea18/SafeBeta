@@ -143,6 +143,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                Intent frrramentas_de_calculo = new Intent(this, InicioCalculadora.class);
                startActivity(frrramentas_de_calculo);
                 break;
+            case R.id.GoogleTradutor:
+                Intent google_tradutor = new Intent(this, GoogleTradutor.class);
+                startActivity(google_tradutor);
+                break;
             case R.id.materias:
                 Intent materias = new Intent(this, TelaMaterias.class);
                 startActivity(materias);
