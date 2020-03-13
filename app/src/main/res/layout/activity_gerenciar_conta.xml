@@ -26,17 +26,109 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="8dp"
         android:layout_below="@id/toolbarGerConta"
-        android:clickable="true"/>
+        android:clickable="true"
+        />
 
-    <ListView
-        android:id="@+id/listaInformacoesUsuario"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:orientation="vertical"
         android:layout_below="@id/fotoDePerfil"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        />
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:text="Nome de usuário:"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/Branco"/>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+           android:minHeight="50dp"
+           android:id="@+id/txtNomeUsuario"
+           android:text="Nome de usuário"
+           android:textColor="@color/Branco"
+           android:clickable="true"
+           android:onClick="editarInfo"
+           android:focusable="true"
+           android:background="?android:attr/selectableItemBackground"
+           android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:text="Email de usuário:"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/Branco"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:minHeight="50dp"
+            android:id="@+id/txtEmail"
+            android:text="Email de usuário"
+            android:textColor="@color/Branco"
+            android:clickable="true"
+            android:onClick="editarInfo"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:text="O que está cursando:"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/Branco"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:minHeight="50dp"
+            android:id="@+id/txtCurso"
+            android:text="O que está cursando"
+            android:textColor="@color/Branco"
+            android:clickable="true"
+            android:onClick="editarInfo"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome da instituição:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/Branco"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:id="@+id/txtInstituicao"
+            android:text="Nome da instituição"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/Branco"
+            android:clickable="true"
+            android:onClick="editarInfo"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
 
 
 

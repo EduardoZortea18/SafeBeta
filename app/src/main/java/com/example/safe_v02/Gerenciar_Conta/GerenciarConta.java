@@ -11,7 +11,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.icu.lang.UCharacter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -23,12 +22,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.safe_v02.MainActivity;
+import com.example.safe_v02.Main.MainActivity;
 import com.example.safe_v02.R;
 
 import java.io.ByteArrayOutputStream;
@@ -42,13 +40,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class GerenciarConta extends AppCompatActivity {
 
 Toolbar toolbar;
+TextView txtNome,txtemail,txtCurso,txtInstituicao;
 ListView listaInformacoesUsuario;
 CircleImageView fotoDePerfil;
 public static final int GET_FROM_GALLERY  = 1;
-ArrayList<String> informacoesPerfil = new ArrayList<String>();
 public static String nome="Nome de usuário",email="Email",curso="O que está cursando",instituicao="Nome da instituição de ensino";
-ArrayAdapter<String> adapter_informacoes_perfil = null;
-String informacoesArray[] = new String[4];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,87 +55,11 @@ String informacoesArray[] = new String[4];
         getSupportActionBar().setTitle("Gerenciar conta");
 
         fotoDePerfil = (CircleImageView)findViewById(R.id.fotoDePerfil);
-
+        txtNome = (TextView)findViewById(R.id.txtNomeUsuario);
+        txtemail = (TextView)findViewById(R.id.txtEmail);
+        txtCurso = (TextView)findViewById(R.id.txtCurso);
+        txtInstituicao = (TextView)findViewById(R.id.txtInstituicao);
         carregarPerfil();
-        listaInformacoesUsuario = (ListView)findViewById(R.id.listaInformacoesUsuario);
-        listaInformacoesUsuario.setAdapter(adapter_informacoes_perfil);
-
-
-        listaInformacoesUsuario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(GerenciarConta.this);
-                alertDialog.setTitle("Editar");
-                final EditText input = new EditText(GerenciarConta.this);
-                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT);
-                lp.setMargins(100,50,100,0);
-                input.setLayoutParams(lp);
-                input.setSelectAllOnFocus(true);
-                alertDialog.setView(input);
-
-                switch(position){
-                    case 0:
-                        input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
-                        input.setText(informacoesArray[0]);
-                        break;
-                    case 1:
-                        input.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-                        input.setText(informacoesArray[1]);
-                        break;
-                    case 2:
-                        input.setText(informacoesArray[2]);
-                        break;
-                    case 3:
-                        input.setText(informacoesArray[3]);
-                        break;
-                }
-
-                alertDialog.setPositiveButton("Salvar",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                if((input.getText().toString().length()>0)){
-                                    switch (position){
-                                        case 0:
-                                            nome=(input.getText().toString());
-                                            informacoesArray[0]=nome;
-                                            break;
-                                        case 1:
-                                            email=(input.getText().toString());
-                                            informacoesArray[1]=email;
-                                            break;
-                                        case 2:
-                                            curso=(input.getText().toString());
-                                            informacoesArray[2]=curso;
-                                            break;
-                                        case 3:
-                                            instituicao=(input.getText().toString());
-                                            informacoesArray[3]=instituicao;
-                                            break;
-
-                                    }
-                                    adapter_informacoes_perfil.notifyDataSetChanged();
-                                    SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.safe_v02", Context.MODE_PRIVATE);
-                                    sharedPreferences.edit().putString("nome",nome).apply();
-                                    sharedPreferences.edit().putString("email",email).apply();
-                                    sharedPreferences.edit().putString("curso",curso).apply();
-                                    sharedPreferences.edit().putString("instituicao",instituicao).apply();
-
-                                }
-                            }
-                        });
-
-                alertDialog.setNegativeButton("Cancelar",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-
-                alertDialog.show();
-            }
-        });
 
 
         fotoDePerfil.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +71,71 @@ String informacoesArray[] = new String[4];
         });
 
     }
+
+    public void editarInfo(final View view) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(GerenciarConta.this);
+        alertDialog.setTitle("Editar");
+        final EditText input = new EditText(GerenciarConta.this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(100,50,100,0);
+        input.setLayoutParams(lp);
+        input.setSelectAllOnFocus(true);
+        alertDialog.setView(input);
+
+        if (txtNome.equals(view)) {
+            input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+            input.setText(nome);
+        } else if (txtemail.equals(view)) {
+            input.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+            input.setText(email);
+        } else if (txtCurso.equals(view)) {
+            input.setText(curso);
+        } else if (txtInstituicao.equals(view)) {
+            input.setText(instituicao);
+        }
+
+        alertDialog.setPositiveButton("Salvar",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        if((input.getText().toString().length()>0)){
+                            if (txtNome.equals(view)) {
+                                nome=input.getText().toString();
+                                txtNome.setText(nome);
+                            } else if (txtemail.equals(view)) {
+                                email=input.getText().toString();
+                                txtemail.setText(email);
+                            } else if (txtCurso.equals(view)) {
+                                curso=input.getText().toString();
+                                txtCurso.setText(curso);
+                            } else if (txtInstituicao.equals(view)) {
+                                instituicao=input.getText().toString();
+                                txtInstituicao.setText(instituicao);
+                            }
+                            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.safe_v02", Context.MODE_PRIVATE);
+                            sharedPreferences.edit().putString("nome",nome).apply();
+                            sharedPreferences.edit().putString("email",email).apply();
+                            sharedPreferences.edit().putString("curso",curso).apply();
+                            sharedPreferences.edit().putString("instituicao",instituicao).apply();
+
+                        }
+                    }
+                });
+
+        alertDialog.setNegativeButton("Cancelar",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        alertDialog.show();
+    }
+
+
+
+
 
 
     @Override
@@ -212,11 +197,10 @@ String informacoesArray[] = new String[4];
             fotoDePerfil.setImageBitmap(MainActivity.foto_usuario);
         }
 
-        informacoesArray[0]=nome;
-        informacoesArray[1]=email;
-        informacoesArray[2]=curso;
-        informacoesArray[3]=instituicao;
-        adapter_informacoes_perfil = new ArrayAdapter<String>(this, R.layout.txt_custom, informacoesArray);
+        txtNome.setText(nome);
+        txtemail.setText(email);
+        txtCurso.setText(curso);
+        txtInstituicao.setText(instituicao);
 
     }
 

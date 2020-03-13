@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.safe_v02.R;
 
@@ -24,5 +25,8 @@ int cont=0;
                 .replace(R.id.container_tutorial, new BoasVindas()).commit();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "Você não pode pular este tutorial.", Toast.LENGTH_SHORT).show();
+    }
 }

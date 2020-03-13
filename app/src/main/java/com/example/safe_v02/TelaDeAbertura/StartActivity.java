@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.safe_v02.MainActivity;
+import com.example.safe_v02.Main.MainActivity;
 import com.example.safe_v02.R;
 
 public class StartActivity extends AppCompatActivity {

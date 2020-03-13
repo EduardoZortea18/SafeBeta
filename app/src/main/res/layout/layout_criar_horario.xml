@@ -19,6 +19,8 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="23dp"
         android:layout_marginRight="20dp"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_below="@id/spinnerNomeAula"
         android:text="Horário de início"/>
 
@@ -30,6 +32,8 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="23dp"
         android:layout_marginRight="20dp"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_below="@id/txtInicioDaAula"
         android:text="Horário de término"/>
 

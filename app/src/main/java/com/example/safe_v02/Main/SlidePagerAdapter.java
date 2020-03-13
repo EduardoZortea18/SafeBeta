@@ -1,4 +1,4 @@
-package com.example.safe_v02;
+package com.example.safe_v02.Main;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

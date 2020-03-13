@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_safe_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GoogleTradutor"></activity>
+        <activity android:name=".GoogleTradutor.GoogleTradutor" android:parentActivityName=".Main.MainActivity"></activity>
         <activity android:name=".Tutorial.MainTutorial" />
         <activity
             android:name=".Agenda_de_eventos.InfoEvento"
@@ -22,29 +22,29 @@
             android:parentActivityName=".Materias_e_notas.TelaMaterias" />
         <activity
             android:name=".Materias_e_notas.TelaMaterias"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".Main.MainActivity" />
         <activity
             android:name=".Gerenciar_Conta.GerenciarConta"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".Main.MainActivity" />
         <activity
             android:name=".Suporte.Suporte"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".Main.MainActivity" />
         <activity
             android:name=".Agenda_de_eventos.CadastrarEvento"
             android:parentActivityName=".Agenda_de_eventos.MeusEventos" />
         <activity
             android:name=".Agenda_de_eventos.MeusEventos"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity" />
+            android:parentActivityName=".Main.MainActivity" />
+        <activity android:name=".Main.MainActivity" />
         <activity
             android:name=".Ferramentas_de_calculo.InicioCalculadora"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".Main.MainActivity" />
         <activity
             android:name=".Bloco_de_notas.TelaEditorTexto"
             android:parentActivityName=".Bloco_de_notas.TelaAnotacoes" />
         <activity
             android:name=".Bloco_de_notas.TelaAnotacoes"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".Main.MainActivity" />
         <activity android:name=".TelaDeAbertura.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

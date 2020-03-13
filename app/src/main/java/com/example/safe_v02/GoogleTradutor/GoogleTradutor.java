@@ -1,4 +1,4 @@
-package com.example.safe_v02;
+package com.example.safe_v02.GoogleTradutor;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.safe_v02.R;
 
 public class GoogleTradutor extends AppCompatActivity {
 WebView webView;

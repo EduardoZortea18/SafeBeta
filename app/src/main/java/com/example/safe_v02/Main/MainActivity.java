@@ -1,8 +1,7 @@
-package com.example.safe_v02;
+package com.example.safe_v02.Main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -12,7 +11,6 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -26,14 +24,14 @@ import android.widget.TextView;
 import com.example.safe_v02.Agenda_de_eventos.MeusEventos;
 import com.example.safe_v02.Bloco_de_notas.TelaAnotacoes;
 import com.example.safe_v02.Ferramentas_de_calculo.InicioCalculadora;
+import com.example.safe_v02.GoogleTradutor.GoogleTradutor;
 import com.example.safe_v02.Materias_e_notas.TelaMaterias;
 import com.example.safe_v02.Gerenciar_Conta.GerenciarConta;
 import com.example.safe_v02.Estatisticas.Estatisticas;
 import com.example.safe_v02.Horarios.Horarios;
+import com.example.safe_v02.R;
 import com.example.safe_v02.Suporte.Suporte;
-import com.example.safe_v02.Tutorial.BoasVindas;
 import com.example.safe_v02.Tutorial.MainTutorial;
-import com.example.safe_v02.Tutorial.Tutorial1;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
