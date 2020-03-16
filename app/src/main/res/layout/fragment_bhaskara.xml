@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Bhaskara">
+    tools:context=".Ferramentas_de_calculo.Matematica.Bhaskara">
 
     <TextView
         android:id="@+id/txtBhaskara"
@@ -25,7 +25,8 @@
         android:layout_height="50dp"
         android:ems="10"
         android:hint="a"
-        android:inputType="datetime"
+        android:inputType="numberDecimal"
+        android:digits="0123456789-."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.072"
@@ -39,8 +40,8 @@
         android:layout_height="50dp"
         android:ems="10"
         android:hint="b"
-        android:inputType="datetime"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:inputType="numberDecimal"
+        android:digits="0123456789-."        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -52,8 +53,8 @@
         android:layout_height="50dp"
         android:ems="10"
         android:hint="c"
-        android:inputType="datetime"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:inputType="numberDecimal"
+        android:digits="0123456789-."        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toStartOf="parent"
