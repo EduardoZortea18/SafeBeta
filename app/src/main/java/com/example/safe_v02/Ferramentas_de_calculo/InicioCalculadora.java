@@ -13,7 +13,9 @@ import android.widget.Spinner;
 
 import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Calorimetria;
 import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Distancia;
+import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Eletricidade;
 import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Empuxo;
+import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Torricelli;
 import com.example.safe_v02.Ferramentas_de_calculo.Matematica.Bhaskara;
 import com.example.safe_v02.Ferramentas_de_calculo.Matematica.RegraDeTres;
 import com.example.safe_v02.R;
@@ -90,6 +92,16 @@ public class InicioCalculadora extends AppCompatActivity implements AdapterView.
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.container_calculadora, new Empuxo()).commit();
+                break;
+            case "Eletricidade":
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container_calculadora, new Eletricidade()).commit();
+                break;
+            case "Equação de Torricelli":
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container_calculadora, new Torricelli()).commit();
                 break;
             case "Equação do 2º grau":
                 getSupportFragmentManager()

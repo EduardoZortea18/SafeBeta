@@ -17,7 +17,7 @@ import com.example.safe_v02.R;
 
 
 public class Bhaskara extends Fragment {
-    TextView txtBhaskara,txtX1,txtX2;
+    TextView txtX1,txtX2;
     EditText txtA,txtB,txtC;
     Button btnResolverBhaskara;
 
@@ -26,7 +26,6 @@ public class Bhaskara extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bhaskara, container, false);
-        txtBhaskara =(TextView)view.findViewById(R.id.txtBhaskara);
         txtA = (EditText)view.findViewById(R.id.txtA);
         txtB = (EditText)view.findViewById(R.id.txtB);
         txtC = (EditText)view.findViewById(R.id.txtC);

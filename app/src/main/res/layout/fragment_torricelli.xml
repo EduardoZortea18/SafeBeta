@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ferramentas_de_calculo.Fisica.Torricelli">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vf² = v0²+2.a.s"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Informe os valores abaixo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTorricelli1"
+                android:minWidth="50dp"
+                android:inputType="numberDecimal"
+                android:digits="0123456789."
+                android:hint="v0(m/s)"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTorricelli2"
+                android:minWidth="50dp"
+                android:inputType="numberDecimal"
+                android:digits="0123456789."
+                android:hint="a(m/s²)"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTorricelli3"
+                android:minWidth="50dp"
+                android:inputType="numberDecimal"
+                android:digits="0123456789."
+                android:hint="s(m)"
+                />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnTorricelli"
+            android:text="Obter velocidade final"
+            android:layout_margin="10dp"
+            android:textColor="@color/Branco"
+            android:backgroundTint="@color/AzulClaro"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtTorricelli4"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="Vf = "
+            android:layout_gravity="center_horizontal"
+            />
+    </LinearLayout>
+</ScrollView>

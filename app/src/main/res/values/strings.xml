@@ -44,12 +44,8 @@
         <item>Calorimetria</item>
         <item>Distância</item>
         <item>Empuxo</item>
-        <item>eletricidade</item>
+        <item>Eletricidade</item>
         <item>Equação de Torricelli</item>
-        <item>MRU</item>
-        <item>Segunda lei de Newton</item>
-        <item>Velocidade das ondas</item>
-        <item>Velocidade média</item>
     </string-array>
 
     <string-array name="array_matematica">
