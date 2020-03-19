@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ferramentas_de_calculo.Fisica.MRU">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S = So+V.t"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Informe os valores abaixo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtMRU1"
+                android:minWidth="50dp"
+                android:inputType="numberDecimal"
+                android:digits="0123456789."
+                android:hint="So(m)"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtMRU2"
+                android:minWidth="50dp"
+                android:inputType="numberDecimal"
+                android:digits="0123456789."
+                android:hint="V(m/s)"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtMRU3"
+                android:minWidth="50dp"
+                android:inputType="numberDecimal"
+                android:digits="0123456789."
+                android:hint="t(s)"
+                />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnMRU"
+            android:text="Obter espaço percorrido"
+            android:layout_margin="10dp"
+            android:textColor="@color/Branco"
+            android:backgroundTint="@color/AzulClaro"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtMRU4"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="S = "
+            android:layout_gravity="center_horizontal"
+            />
+    </LinearLayout>
+
+</ScrollView>

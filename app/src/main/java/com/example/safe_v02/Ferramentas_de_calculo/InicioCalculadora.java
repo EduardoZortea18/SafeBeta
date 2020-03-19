@@ -15,6 +15,7 @@ import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Calorimetria;
 import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Distancia;
 import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Eletricidade;
 import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Empuxo;
+import com.example.safe_v02.Ferramentas_de_calculo.Fisica.MRU;
 import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Torricelli;
 import com.example.safe_v02.Ferramentas_de_calculo.Matematica.Bhaskara;
 import com.example.safe_v02.Ferramentas_de_calculo.Matematica.RegraDeTres;
@@ -102,6 +103,11 @@ public class InicioCalculadora extends AppCompatActivity implements AdapterView.
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.container_calculadora, new Torricelli()).commit();
+                break;
+            case "MRU":
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container_calculadora, new MRU()).commit();
                 break;
             case "Equação do 2º grau":
                 getSupportFragmentManager()

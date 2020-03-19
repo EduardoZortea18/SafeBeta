@@ -46,6 +46,7 @@
         <item>Empuxo</item>
         <item>Eletricidade</item>
         <item>Equação de Torricelli</item>
+        <item>MRU</item>
     </string-array>
 
     <string-array name="array_matematica">
