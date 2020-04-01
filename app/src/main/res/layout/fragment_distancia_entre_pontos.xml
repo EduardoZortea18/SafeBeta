@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ferramentas_de_calculo.Matematica.DistanciaEntrePontos">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/distancia_pontos"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="Insira os valores abaixo" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="200dp"
+                android:maxHeight="200dp"
+                android:id="@+id/txtDistanciaPontos1"
+                android:inputType="numberDecimal"
+                android:digits="-.0123456789"
+                android:layout_margin="2dp"
+                android:hint="X1"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="200dp"
+                android:maxHeight="200dp"
+                android:id="@+id/txtDistanciaPontos2"
+                android:inputType="numberDecimal"
+                android:digits="-.0123456789"
+                android:layout_margin="2dp"
+                android:hint="Y1"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="200dp"
+                android:maxHeight="200dp"
+                android:id="@+id/txtDistanciaPontos3"
+                android:inputType="numberDecimal"
+                android:digits="-.0123456789"
+                android:layout_margin="2dp"
+                android:hint="X2"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="200dp"
+                android:maxHeight="200dp"
+                android:id="@+id/txtDistanciaPontos4"
+                android:inputType="numberDecimal"
+                android:digits="-.0123456789"
+                android:layout_margin="2dp"
+                android:hint="Y2"
+                />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/btnDistanciaPontos"
+            android:text="Encontrar distância"
+            android:textColor="@color/Branco"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/AzulClaro"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:id="@+id/txtDistanciaPonto5"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="Distância = " />
+
+    </LinearLayout>
+
+</ScrollView>

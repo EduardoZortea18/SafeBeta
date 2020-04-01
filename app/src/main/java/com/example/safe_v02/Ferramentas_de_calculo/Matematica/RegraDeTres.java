@@ -38,39 +38,44 @@ public class RegraDeTres extends Fragment {
         btnResolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Float n1, n2, n3, n4, x;
-                String resultado;
-                if (txtN1.getText().toString().equalsIgnoreCase("x")) {
-                    n2 = Float.parseFloat(txtN2.getText().toString());
-                    n3 = Float.parseFloat(txtN3.getText().toString());
-                    n4 = Float.parseFloat(txtN4.getText().toString());
-                    x = (n3 * n2) / n4;
-                    resultado = String.format("%.1f", x);
-                    txtResultado.setText("Valor de X = " + resultado);
-                } else if (txtN2.getText().toString().equalsIgnoreCase("x")) {
-                    n1 = Float.parseFloat(txtN1.getText().toString());
-                    n3 = Float.parseFloat(txtN3.getText().toString());
-                    n4 = Float.parseFloat(txtN4.getText().toString());
-                    x = (n1 * n4) / n3;
-                    resultado = String.format("%.1f", x);
-                    txtResultado.setText("Valor de X = " + resultado);
-                } else if (txtN3.getText().toString().equalsIgnoreCase("x")) {
-                    n1 = Float.parseFloat(txtN1.getText().toString());
-                    n2 = Float.parseFloat(txtN2.getText().toString());
-                    n4 = Float.parseFloat(txtN4.getText().toString());
-                    x = (n1 * n4) / n2;
-                    resultado = String.format("%.1f", x);
-                    txtResultado.setText("Valor de X = " + resultado);
-                } else if (txtN4.getText().toString().equalsIgnoreCase("x")) {
-                    n1 = Float.parseFloat(txtN1.getText().toString());
-                    n2 = Float.parseFloat(txtN2.getText().toString());
-                    n3 = Float.parseFloat(txtN3.getText().toString());
-                    x = (n3 * n2) / n1;
-                    resultado = String.format("%.1f", x);
-                    txtResultado.setText("Valor de X = " + resultado);
-                } else {
-                    Toast.makeText(getActivity().getApplicationContext(),
-                            "Erro!", Toast.LENGTH_LONG).show();
+                if((txtN1.getText().toString().length()>0)&&(txtN2.getText().toString().length()>0)&&(txtN3.getText().toString().length()>0)&&(txtN4.getText().toString().length()>0)){
+                    Float n1, n2, n3, n4, x;
+                    String resultado;
+                    if (txtN1.getText().toString().equalsIgnoreCase("x")) {
+                        n2 = Float.parseFloat(txtN2.getText().toString());
+                        n3 = Float.parseFloat(txtN3.getText().toString());
+                        n4 = Float.parseFloat(txtN4.getText().toString());
+                        x = (n3 * n2) / n4;
+                        resultado = String.format("%.1f", x);
+                        txtResultado.setText("Valor de X = " + resultado);
+                    } else if (txtN2.getText().toString().equalsIgnoreCase("x")) {
+                        n1 = Float.parseFloat(txtN1.getText().toString());
+                        n3 = Float.parseFloat(txtN3.getText().toString());
+                        n4 = Float.parseFloat(txtN4.getText().toString());
+                        x = (n1 * n4) / n3;
+                        resultado = String.format("%.1f", x);
+                        txtResultado.setText("Valor de X = " + resultado);
+                    } else if (txtN3.getText().toString().equalsIgnoreCase("x")) {
+                        n1 = Float.parseFloat(txtN1.getText().toString());
+                        n2 = Float.parseFloat(txtN2.getText().toString());
+                        n4 = Float.parseFloat(txtN4.getText().toString());
+                        x = (n1 * n4) / n2;
+                        resultado = String.format("%.1f", x);
+                        txtResultado.setText("Valor de X = " + resultado);
+                    } else if (txtN4.getText().toString().equalsIgnoreCase("x")) {
+                        n1 = Float.parseFloat(txtN1.getText().toString());
+                        n2 = Float.parseFloat(txtN2.getText().toString());
+                        n3 = Float.parseFloat(txtN3.getText().toString());
+                        x = (n3 * n2) / n1;
+                        resultado = String.format("%.1f", x);
+                        txtResultado.setText("Valor de X = " + resultado);
+                    } else {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Erro!", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else{
+                    Toast.makeText(getActivity(), "Você deve preencher todos os campos para realizar a operação", Toast.LENGTH_SHORT).show();
                 }
             }
         });

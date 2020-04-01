@@ -37,5 +37,8 @@
         android:id="@+id/listaEstatisticas"
         android:layout_margin="14dp"
         android:layout_below="@id/txtStats1"
+        android:clickable="false"
+        android:focusable="false"
+        android:listSelector="@android:color/transparent"
         />
 </RelativeLayout>

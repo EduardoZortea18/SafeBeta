@@ -18,6 +18,7 @@ import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Empuxo;
 import com.example.safe_v02.Ferramentas_de_calculo.Fisica.MRU;
 import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Torricelli;
 import com.example.safe_v02.Ferramentas_de_calculo.Matematica.Bhaskara;
+import com.example.safe_v02.Ferramentas_de_calculo.Matematica.DistanciaEntrePontos;
 import com.example.safe_v02.Ferramentas_de_calculo.Matematica.RegraDeTres;
 import com.example.safe_v02.R;
 
@@ -88,6 +89,11 @@ public class InicioCalculadora extends AppCompatActivity implements AdapterView.
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.container_calculadora, new Distancia()).commit();
+                break;
+            case "Distância entre dois pontos":
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container_calculadora, new DistanciaEntrePontos()).commit();
                 break;
             case "Empuxo":
                 getSupportFragmentManager()
