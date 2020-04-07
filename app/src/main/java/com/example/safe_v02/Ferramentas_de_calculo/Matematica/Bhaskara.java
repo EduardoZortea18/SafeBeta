@@ -43,6 +43,8 @@ public class Bhaskara extends Fragment {
                     b= Double.parseDouble(txtB.getText().toString());
                     c= Double.parseDouble(txtC.getText().toString());
                     String valorX1,valorX2;
+                    txtX1.setText(" ");
+                    txtX2.setText(" ");
                     delta = ((b*b)-((4*a)*c));
                     if(delta<0){
                         txtX1.setText("Não existem raizes reais.");
@@ -55,12 +57,16 @@ public class Bhaskara extends Fragment {
                     else{
                         x1 = ((-b)+(Math.sqrt(delta)))/(2*a);
                         x2 = ((-b)-(Math.sqrt(delta)))/(2*a);
-                        valorX1 = String.format("%.2f",x1);
-                        valorX2 = String.format("%.2f",x2);
+                        if((x1<0)&&(x2<0)){
+                            txtX1.setText("Não existem raizes reais.");
+                        }
+                        else{
+                            valorX1 = String.format("%.2f",x1);
+                            valorX2 = String.format("%.2f",x2);
 
-                        txtX1.setText("Valor de X1 = "+ valorX1);
-                        txtX2.setText("Valor de X2 = "+ valorX2);
-
+                            txtX1.setText("Valor de X1 = "+ valorX1);
+                            txtX2.setText("Valor de X2 = "+ valorX2);
+                        }
                     }
                 }
                 else{
