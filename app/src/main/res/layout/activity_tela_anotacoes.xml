@@ -38,5 +38,11 @@
         app:backgroundTint="#3F51B5"
         app:srcCompat="@drawable/ic_add_24dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtAvisoAnotacoes"
+        android:gravity="center"
+        android:layout_centerInParent="true"/>
 
 </android.widget.RelativeLayout>

@@ -90,7 +90,7 @@
             android:text="Encontrar distância"
             android:textColor="@color/Branco"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/AzulClaro"/>
+            android:background="@drawable/bg_redondo" />
 
         <TextView
             android:layout_marginTop="10dp"

@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.safe_v02.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,6 +30,8 @@ public class TelaAnotacoes extends AppCompatActivity {
     static ArrayList<String> notas = new ArrayList<String>();
     static ArrayAdapter<String> adapter = null;
     Toolbar toolbar;
+
+    TextView txtAviso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,9 @@ public class TelaAnotacoes extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, notas);
         listView.setAdapter(adapter);
 
+        txtAviso = (TextView)findViewById(R.id.txtAvisoAnotacoes);
+        verificarAnotacoes();
+
         //Caso seja exercido um toque curto em um itemda listView, ele será aberto na tela de edição
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -91,12 +97,14 @@ public class TelaAnotacoes extends AppCompatActivity {
                         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.safe_v02", Context.MODE_PRIVATE);
                         HashSet<String> set = new HashSet(notas);
                         sharedPreferences.edit().putStringSet("notas",set).apply();
+                        verificarAnotacoes();
                     }
                 });
                 adb.show();
                 return true;
             }
         });
+
     }
 
     // Faz com que o botão voltar da toolbar funcione igual ao do celular
@@ -109,4 +117,18 @@ public class TelaAnotacoes extends AppCompatActivity {
         return false;
     }
 
+    public void verificarAnotacoes(){
+        if(notas.size()<=0){
+            txtAviso.setText(R.string.MsgAnotacoes);
+        }
+        else{
+            txtAviso.setText(" ");
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        verificarAnotacoes();
+    }
 }

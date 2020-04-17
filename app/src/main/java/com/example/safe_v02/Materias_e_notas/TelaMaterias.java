@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.widget.Toolbar;
@@ -26,6 +28,7 @@ public class TelaMaterias extends AppCompatActivity implements CriarMateriaDialo
    ListView lista_de_materias;
    MateriaDAO materiaDAO;
    Toolbar toolbar;
+   TextView txtAviso;
 
    public void abrirDialogCriarMateria(View view) {
       CriarMateriaDialog dialog = new CriarMateriaDialog(null);
@@ -45,6 +48,9 @@ public class TelaMaterias extends AppCompatActivity implements CriarMateriaDialo
       array_materias = materiaDAO.obterTodas();
       adapter_materias = new MateriaAdapter(this, array_materias);
       lista_de_materias.setAdapter(adapter_materias);
+
+      txtAviso = (TextView)findViewById(R.id.txtAvisoMaterias);
+      verificarMaterias();
 
       lista_de_materias.setOnItemClickListener(new OnItemClickListener() {
          public void onItemClick(AdapterView adapterView, View view, int position, long id) {
@@ -80,6 +86,7 @@ public class TelaMaterias extends AppCompatActivity implements CriarMateriaDialo
                            materiaDAO.excluir(materia);
                            array_materias.remove(position);
                            adapter_materias.notifyDataSetInvalidated();
+                           verificarMaterias();
                         }
                      });
                      builder1.show();
@@ -101,7 +108,23 @@ public class TelaMaterias extends AppCompatActivity implements CriarMateriaDialo
          array_materias = materiaDAO.obterTodas();
          adapter_materias = new MateriaAdapter(this, array_materias);
          lista_de_materias.setAdapter(adapter_materias);
+         verificarMaterias();
       }
 
+   }
+
+   public void verificarMaterias(){
+      if(array_materias.size()<=0){
+         txtAviso.setText(R.string.MsgMaterias);
+      }
+      else{
+         txtAviso.setText(" ");
+      }
+   }
+
+   @Override
+   protected void onResume() {
+      super.onResume();
+      verificarMaterias();
    }
 }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Ferramentas_de_calculo.Fisica.Calorimetria">
+    tools:context=".Ferramentas_de_calculo.Matematica.Equacao_primeiro_grau">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,78 +13,80 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="ax + b = 0"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:text="Q = m.c.Δθ"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"/>
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Informe os valores de a e b"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:text="Digite os valores abaixo"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"/>
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            >
+            android:layout_marginTop="3dp"
+            android:layout_gravity="center_horizontal">
 
             <EditText
+                android:id="@+id/txtPrimeiroGrau1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="50dp"
-                android:id="@+id/txtCalorimetria1"
-                android:digits="0123456789.-"
+                android:layout_margin="3dp"
+                android:hint="a"
                 android:inputType="numberDecimal"
-                android:hint="m(g)"
-                />
+                android:digits="0123456789-." />
 
             <EditText
+                android:id="@+id/txtPrimeiroGrau2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="50dp"
-                android:id="@+id/txtCalorimetria2"
-                android:digits="0123456789.-"
+                android:layout_margin="3dp"
+                android:hint="b"
                 android:inputType="numberDecimal"
-                android:hint="c(ºC)"
-                />
+                android:digits="0123456789-." />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="50dp"
-                android:id="@+id/txtCalorimetria3"
-                android:digits="0123456789.-"
+                android:layout_margin="3dp"
+                android:hint=" = 0"
                 android:inputType="numberDecimal"
-                android:hint="ΔT(cal/g ºC)"
-                />
-
+                android:digits="0123456789-." />
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtCalorimetria4"
-            android:text="Q = "
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        />
-
         <Button
+            android:id="@+id/btnPrimeiroGrau"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnCalorimetria"
+            android:layout_margin="10dp"
+            android:onClick="resolverBhaskara"
             android:text="Resolver"
             android:background="@drawable/bg_redondo"
             android:textColor="@color/Branco"
-            android:layout_margin="10dp"
-            />
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        <TextView
+            android:id="@+id/txtPrimeiroGrau3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="100dp"
+            android:minHeight="50dp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:layout_gravity="center_horizontal"
+            android:text="X = ?"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
     </LinearLayout>
 
 </ScrollView>

@@ -64,7 +64,7 @@
             android:layout_margin="10dp"
             android:onClick="resolverBhaskara"
             android:text="Resolver"
-            android:backgroundTint="@color/AzulClaro"
+            android:background="@drawable/bg_redondo"
             android:textColor="@color/Branco"
             android:layout_gravity="center_horizontal"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />

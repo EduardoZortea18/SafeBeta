@@ -52,6 +52,7 @@
     <string-array name="array_matematica">
         <item>Selecione uma operação</item>
         <item>Distância entre dois pontos</item>
+        <item>Equação do 1º grau</item>
         <item>Equação do 2º grau</item>
         <item>Regra de três simples</item>
     </string-array>
@@ -79,5 +80,26 @@
        Ao clicar no icone no canto superior esquerdo da tela ou arrastar para direita a partir da margem esquerda da tela
        você irá abrir o drawer de ferramentas do app onde estão as outras ferramentas.\n
        Agora você pode começar a utilizar o aplicativo e desfrutar das ferramentas que disponibilizamos para você.\n
+    </string>
+
+    <string name="MsgMaterias">
+        Você não possui nenhuma matéria cadastrada. Para cadastrar uma nova matérias basta clicar no botão
+        "Adicionar matéria" na parte inferior da tela.
+    </string>
+    <string name="MsgEventos">
+        Você não possui nenhum evento cadastrado. Para cadastrar um novo evento basta clicar no botão
+        "+" no canto inferior direito.
+    </string>
+    <string name="MsgAnotacoes">
+        Você não possui nenhuma anotação. Para adicionar uma nova anotação basta clicar no botão
+        "+" no canto inferior direito.
+    </string>
+    <string name="MsgEstatisticas">
+        Não há nenhuma estatística para ser apresentada pois não existe nenhuma matéria cadastrada.
+        Para cadastrar matérias é necessário que você vá até a tela de matérias.
+    </string>
+    <string name="MsgHorarios">
+        Você não possui nenhum horário de aula salvo neste dia.
+        Para que poder adicionar seus horários de aula você deve clicar no botão "Adicionar aula" na parte inferior da tela.
     </string>
 </resources>

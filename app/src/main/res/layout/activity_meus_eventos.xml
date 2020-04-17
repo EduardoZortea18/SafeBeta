@@ -38,4 +38,12 @@
         android:focusable="true"
         app:backgroundTint="@color/AzulMedio"
         app:srcCompat="@drawable/ic_add_24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtAvisoEventos"
+        android:gravity="center"
+        android:layout_centerInParent="true"/>
+
 </android.widget.RelativeLayout>

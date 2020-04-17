@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.safe_v02.Horarios.DialogCriarHorario.DialogCriarHorarioListener;
@@ -31,6 +32,7 @@ public class Horarios extends Fragment implements AdapterView.OnItemSelectedList
     ArrayList<Horario> horario_quarta = new ArrayList<Horario>();
     ArrayList<Horario> horario_quinta = new ArrayList<Horario>();
     ArrayList<Horario> horario_sexta = new ArrayList<Horario>();
+
     static ArrayAdapter<Horario> adapter_lista_horarios = null;
     @Nullable
     @Override
@@ -47,6 +49,9 @@ public class Horarios extends Fragment implements AdapterView.OnItemSelectedList
         spinnerDiasDaSemana.setOnItemSelectedListener(this);
 
         carregarHorarios();
+
+        txtAviso = (TextView)view.findViewById(R.id.txtAvisoHorarios);
+
 
         btnAdicionaraula = (Button)view.findViewById(R.id.btnAdicionaraula);
         btnAdicionaraula.setOnClickListener(new View.OnClickListener() {

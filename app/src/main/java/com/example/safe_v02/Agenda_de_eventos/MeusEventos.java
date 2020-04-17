@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.widget.Toolbar;
@@ -25,6 +27,7 @@ public class MeusEventos extends AppCompatActivity {
    FloatingActionButton btnCriarEvento;
    EventoDAO eventoDAO;
    Toolbar toolbar;
+   TextView txtAviso;
 
    protected void onCreate(Bundle bundle) {
       super.onCreate(bundle);
@@ -38,6 +41,10 @@ public class MeusEventos extends AppCompatActivity {
       eventos = new ArrayList<Evento>(eventoDAO.obterTodos());
       adapter = new EventoAdapter(this, eventos);
       ListaDeEventos.setAdapter(adapter);
+
+      txtAviso = (TextView)findViewById(R.id.txtAvisoEventos);
+      verificarEventtos();
+
       btnCriarEvento = (FloatingActionButton)findViewById(R.id.btnCriarEvento);
       btnCriarEvento.setOnClickListener(new OnClickListener() {
          public void onClick(View view) {
@@ -45,7 +52,7 @@ public class MeusEventos extends AppCompatActivity {
             startActivity(intent);
          }
       });
-      this.ListaDeEventos.setOnItemLongClickListener(new OnItemLongClickListener() {
+      ListaDeEventos.setOnItemLongClickListener(new OnItemLongClickListener() {
          public boolean onItemLongClick(AdapterView parent, View view, final int position, long id) {
             Builder builder = new Builder(MeusEventos.this);
             builder.setTitle("Excluir evento");
@@ -57,18 +64,36 @@ public class MeusEventos extends AppCompatActivity {
                   eventoDAO.excluir(evento);
                   eventos.remove(position);
                   MeusEventos.adapter.notifyDataSetInvalidated();
+                  verificarEventtos();
                }
             });
             builder.show();
             return true;
          }
       });
-      this.ListaDeEventos.setOnItemClickListener(new OnItemClickListener() {
+      ListaDeEventos.setOnItemClickListener(new OnItemClickListener() {
          public void onItemClick(AdapterView parent, View view, int position, long id) {
             Intent intent = new Intent(MeusEventos.this, InfoEvento.class);
             intent.putExtra("idEvento", position);
             startActivity(intent);
          }
       });
+
+
+   }
+
+   public void verificarEventtos(){
+      if(eventos.size()<=0){
+         txtAviso.setText(R.string.MsgEventos);
+      }
+      else{
+         txtAviso.setText(" ");
+      }
+   }
+
+   @Override
+   protected void onResume() {
+      super.onResume();
+      verificarEventtos();
    }
 }

@@ -71,7 +71,8 @@
             android:text="Obter espaço percorrido"
             android:layout_margin="10dp"
             android:textColor="@color/Branco"
-            android:backgroundTint="@color/AzulClaro"/>
+            android:background="@drawable/bg_redondo"
+            />
 
 
         <TextView
