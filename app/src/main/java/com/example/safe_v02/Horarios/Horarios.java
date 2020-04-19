@@ -50,9 +50,6 @@ public class Horarios extends Fragment implements AdapterView.OnItemSelectedList
 
         carregarHorarios();
 
-        txtAviso = (TextView)view.findViewById(R.id.txtAvisoHorarios);
-
-
         btnAdicionaraula = (Button)view.findViewById(R.id.btnAdicionaraula);
         btnAdicionaraula.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -294,6 +291,5 @@ public class Horarios extends Fragment implements AdapterView.OnItemSelectedList
                 }
             }
     }
-
 
 }

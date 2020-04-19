@@ -20,6 +20,7 @@ import com.example.safe_v02.Ferramentas_de_calculo.Fisica.Torricelli;
 import com.example.safe_v02.Ferramentas_de_calculo.Matematica.Bhaskara;
 import com.example.safe_v02.Ferramentas_de_calculo.Matematica.DistanciaEntrePontos;
 import com.example.safe_v02.Ferramentas_de_calculo.Matematica.Equacao_primeiro_grau;
+import com.example.safe_v02.Ferramentas_de_calculo.Matematica.Pitagoras;
 import com.example.safe_v02.Ferramentas_de_calculo.Matematica.RegraDeTres;
 import com.example.safe_v02.R;
 
@@ -131,6 +132,12 @@ public class InicioCalculadora extends AppCompatActivity implements AdapterView.
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.container_calculadora, new RegraDeTres()).commit();
+
+                break;
+            case "Teorema de Pitágoras":
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container_calculadora, new Pitagoras()).commit();
 
                 break;
             default:
