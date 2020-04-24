@@ -1,9 +1,13 @@
 package com.example.safe_v02.Agenda_de_eventos;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog.OnTimeSetListener;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +24,7 @@ import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.widget.Toolbar;
 import com.example.safe_v02.Materias_e_notas.Materia;
 import com.example.safe_v02.Materias_e_notas.MateriaDAO;
+import com.example.safe_v02.Notificacoes.AlertReceiver;
 import com.example.safe_v02.Pickers.DatePickerFragment;
 import com.example.safe_v02.Pickers.TimePickerFragment;
 import com.example.safe_v02.R;
@@ -28,7 +33,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class CadastrarEvento extends AppCompatActivity implements OnDateSetListener, OnTimeSetListener {
+public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnDateSetListener, OnTimeSetListener {
    ImageButton botaoEscolherData;
    ImageButton botaoEscolherHora;
    FloatingActionButton btnSalvarEvento;
@@ -39,6 +44,7 @@ public class CadastrarEvento extends AppCompatActivity implements OnDateSetListe
    TextView txtDataEvento;
    TextView txtHoraEvento;
    EditText txtTituloEvento,txtDescricaoEvento;
+   Calendar custom_calendar = Calendar.getInstance();
 
    public void carregarEvento(int idEvento) {
       if (idEvento != -1) {
@@ -150,11 +156,10 @@ public class CadastrarEvento extends AppCompatActivity implements OnDateSetListe
                evento.setMateriaEvento(materia);
                evento.setDescricao(descricao);
                if (idEvento != -1) {
-                  MeusEventos.eventos.set(idEvento, evento);
                   eventoDAO.atualizar(evento);
                } else {
-                  MeusEventos.eventos.add(evento);
                   eventoDAO.inserirEvento(evento);
+                  salvarAlarme(custom_calendar,evento.getId());
                }
 
                MeusEventos.adapter.notifyDataSetChanged();
@@ -179,20 +184,18 @@ public class CadastrarEvento extends AppCompatActivity implements OnDateSetListe
    }
 
    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-      Calendar c = Calendar.getInstance();
-      c.set(Calendar.YEAR, year);
-      c.set(Calendar.MONTH, month);
-      c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-      String data = DateFormat.getDateInstance(2).format(c.getTime());
+      custom_calendar.set(Calendar.YEAR, year);
+      custom_calendar.set(Calendar.MONTH, month);
+      custom_calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+      String data = DateFormat.getDateInstance(2).format(custom_calendar.getTime());
       txtDataEvento.setText(data);
    }
 
 
    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
-      Calendar c = Calendar.getInstance();
-      c.set(Calendar.HOUR_OF_DAY, hourOfDay);
-      c.set(Calendar.MINUTE, minute);
-      c.set(Calendar.SECOND, 0);
+      custom_calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+      custom_calendar.set(Calendar.MINUTE, minute);
+      custom_calendar.set(Calendar.SECOND, 0);
       txtHoraEvento.setText(hourOfDay+":"+minute);
    }
 
@@ -224,4 +227,22 @@ public class CadastrarEvento extends AppCompatActivity implements OnDateSetListe
       adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
       spinnerMateriaevento.setAdapter(adapter);
    }
+
+   private void salvarAlarme(Calendar c,int idEvento) {
+      AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+      Intent intent = new Intent(this, AlertReceiver.class);
+      intent.putExtra("Titulo",txtTituloEvento.getText().toString());
+      intent.putExtra("DataEHora",txtDataEvento.getText().toString()+" "+txtHoraEvento.getText().toString());
+      intent.putExtra("IdEvento",idEvento);
+      PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), idEvento, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+      if (c.before(Calendar.getInstance())) {
+         c.add(Calendar.DATE, 1);
+      }
+
+      alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+      String horario = DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+      Toast.makeText(this, "Alarme salvo para às "+horario, Toast.LENGTH_SHORT).show();
+   }
+
 }

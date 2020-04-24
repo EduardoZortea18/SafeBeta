@@ -1,5 +1,8 @@
 package com.example.safe_v02.Agenda_de_eventos;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog.Builder;
@@ -32,15 +36,13 @@ public class MeusEventos extends AppCompatActivity {
    protected void onCreate(Bundle bundle) {
       super.onCreate(bundle);
       setContentView(R.layout.activity_meus_eventos);
-      this.toolbar = (Toolbar)findViewById(R.id.toolbarAg1);
+      toolbar = (Toolbar)findViewById(R.id.toolbarAg1);
       setSupportActionBar(toolbar);
       getSupportActionBar().setTitle("Meus eventos");
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       ListaDeEventos = (ListView)findViewById(R.id.ListaDeEventos);
       eventoDAO = new EventoDAO(this);
-      eventos = new ArrayList<Evento>(eventoDAO.obterTodos());
-      adapter = new EventoAdapter(this, eventos);
-      ListaDeEventos.setAdapter(adapter);
+      carregarEventos();
 
       txtAviso = (TextView)findViewById(R.id.txtAvisoEventos);
       verificarEventtos();
@@ -60,10 +62,9 @@ public class MeusEventos extends AppCompatActivity {
             builder.setNegativeButton("Não", (android.content.DialogInterface.OnClickListener)null);
             builder.setPositiveButton("Sim", new android.content.DialogInterface.OnClickListener() {
                public void onClick(DialogInterface dialog, int which) {
-                  Evento evento = eventos.get(position);
-                  eventoDAO.excluir(evento);
-                  eventos.remove(position);
-                  MeusEventos.adapter.notifyDataSetInvalidated();
+                  cancelarAlarme(eventos.get(position).getId());
+                  eventoDAO.excluir(eventos.get(position));
+                  carregarEventos();
                   verificarEventtos();
                }
             });
@@ -94,6 +95,23 @@ public class MeusEventos extends AppCompatActivity {
    @Override
    protected void onResume() {
       super.onResume();
+      carregarEventos();
       verificarEventtos();
+   }
+
+   public void carregarEventos(){
+      eventos = new ArrayList<Evento>(eventoDAO.obterTodos());
+      adapter = new EventoAdapter(this, eventos);
+      ListaDeEventos.setAdapter(adapter);
+   }
+
+
+   public void cancelarAlarme(int idEvento){
+      AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+      Intent intent = new Intent(this, AlarmManager.class);
+      PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), idEvento, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+      alarmManager.cancel(pendingIntent);
+      Toast.makeText(this, "Alarme cancelado do id "+idEvento, Toast.LENGTH_SHORT).show();
    }
 }
