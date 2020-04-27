@@ -159,9 +159,10 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
 
                if (idEvento != -1) {
                   eventoDAO.atualizar(evento);
+                  salvarAlarme(custom_calendar,evento.getIdCriacao(),evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
                } else {
                   eventoDAO.inserirEvento(evento);
-                  salvarAlarme(custom_calendar,evento.getIdCriacao(),evento.getTituloEvento(),(evento.getDataEvento()+" "+evento.getHorarioevento()));
+                  salvarAlarme(custom_calendar,evento.getIdCriacao(),evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
                }
 
                MeusEventos.adapter.notifyDataSetChanged();
@@ -241,11 +242,18 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
       if (c.before(Calendar.getInstance())) {
          c.add(Calendar.DATE, 1);
       }
-
       alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
-      String horario = DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
-      Toast.makeText(this, "Alarme salvo para às "+horario, Toast.LENGTH_SHORT).show();
    }
 
+    private void cancelarAlarme(int idEvento,String titulo,String descricao) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        intent.putExtra("Titulo",titulo);
+        intent.putExtra("Descricao",descricao);
+        intent.putExtra("idAlarme",idEvento);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), idEvento, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.cancel(pendingIntent);
+
+    }
 
 }

@@ -117,13 +117,8 @@ public class MeusEventos extends AppCompatActivity {
       intent.putExtra("Descricao",descricao);
       intent.putExtra("idAlarme",idEvento);
       PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), idEvento, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+      alarmManager.cancel(pendingIntent);
 
-      try {
-         alarmManager.cancel(pendingIntent);
-         Log.e("AlarmManager", "Cancelling all pending intents");
-      } catch (Exception e) {
-         Log.e("AlarmManager", "AlarmManager update was not canceled. " + e.toString());
-      }        Toast.makeText(this, "Alarme cancelado", Toast.LENGTH_SHORT).show();
    }
 
 }
