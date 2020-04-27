@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.safe_v02.Notificacoes.AlarmManagerUtil;
 import com.example.safe_v02.Notificacoes.AlertReceiver;
 import com.example.safe_v02.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -65,7 +66,8 @@ public class MeusEventos extends AppCompatActivity {
                    int idEvento = eventos.get(position).getIdAlarme();
                    String titulo=eventos.get(position).getTituloEvento();
                    String descricao=eventos.get(position).getDataEvento()+" "+eventos.get(position).getHorarioevento();
-                   cancelarAlarme(idEvento,titulo,descricao);
+                   AlarmManagerUtil alarmManagerUtil = new AlarmManagerUtil(MeusEventos.this);
+                   alarmManagerUtil.cancelarAlarme(idEvento,titulo,descricao);
                    eventoDAO.excluir(eventos.get(position));
                    carregarEventos();
                    verificarEventtos();
@@ -108,16 +110,4 @@ public class MeusEventos extends AppCompatActivity {
       adapter = new EventoAdapter(this, eventos);
       ListaDeEventos.setAdapter(adapter);
    }
-
-   private void cancelarAlarme(int idEvento,String titulo,String descricao) {
-      AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-      Intent intent = new Intent(this, AlertReceiver.class);
-      intent.putExtra("Titulo",titulo);
-      intent.putExtra("Descricao",descricao);
-      intent.putExtra("idAlarme",idEvento);
-      PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), idEvento, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-      alarmManager.cancel(pendingIntent);
-
-   }
-
 }
