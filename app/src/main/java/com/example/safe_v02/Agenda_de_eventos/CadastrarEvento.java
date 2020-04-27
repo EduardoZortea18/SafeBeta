@@ -155,23 +155,23 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
                evento.setTipoEvento(tipo);
                evento.setMateriaEvento(materia);
                evento.setDescricao(descricao);
-               evento.setIdCriacao((int)System.currentTimeMillis());
+               evento.setIdAlarme((int)System.currentTimeMillis());
 
                if (idEvento != -1) {
                   eventoDAO.atualizar(evento);
-                  salvarAlarme(custom_calendar,evento.getIdCriacao(),evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
+                  int idAlarme = getIntent().getIntExtra("idAlarme",0);
+                  salvarAlarme(custom_calendar,idAlarme,evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
                } else {
                   eventoDAO.inserirEvento(evento);
-                  salvarAlarme(custom_calendar,evento.getIdCriacao(),evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
+                  salvarAlarme(custom_calendar,evento.getIdAlarme(),evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
                }
-
-               MeusEventos.adapter.notifyDataSetChanged();
                finish();
             } else {
                Toast.makeText(getApplicationContext(), "Você deve preencher todos os campos para salvar o evento", 0).show();
             }
          }
       });
+
       botaoEscolherData = (ImageButton)findViewById(R.id.buttonEscolherData);
       botaoEscolherData.setOnClickListener(new android.view.View.OnClickListener() {
          public void onClick(View view) {
@@ -244,16 +244,5 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
       }
       alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
    }
-
-    private void cancelarAlarme(int idEvento,String titulo,String descricao) {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlertReceiver.class);
-        intent.putExtra("Titulo",titulo);
-        intent.putExtra("Descricao",descricao);
-        intent.putExtra("idAlarme",idEvento);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), idEvento, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        alarmManager.cancel(pendingIntent);
-
-    }
 
 }

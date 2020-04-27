@@ -52,8 +52,7 @@
             </intent-filter>
         </activity>
 
-        <receiver  android:name=".Notificacoes.AlertReceiver">
-
+        <receiver android:name=".Notificacoes.AlertReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />

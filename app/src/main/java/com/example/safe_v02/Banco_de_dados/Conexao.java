@@ -14,7 +14,7 @@ public class Conexao extends SQLiteOpenHelper {
    }
 
    public void onCreate(SQLiteDatabase db) {
-      db.execSQL("create table eventos(id integer primary key ,nome varchar(50),tipo varchar(20),materia varchar(50),data varchar(50),hora varchar(10),descricao varchar(200),idCriacao int)");
+      db.execSQL("create table eventos(id integer primary key ,nome varchar(50),tipo varchar(20),materia varchar(50),data varchar(50),hora varchar(10),descricao varchar(200),idAlarme int)");
       db.execSQL("create table horarios(id integer primary key  ,dia integer,horaInicio varchar(5),horaTermino varchar(5),materia varchar(50))");
       db.execSQL("create table materias(id integer primary key  ,nome varchar(50),tipoDeMedia varchar(20),qntdNotas integer,media double,notas varchar(200))");
    }

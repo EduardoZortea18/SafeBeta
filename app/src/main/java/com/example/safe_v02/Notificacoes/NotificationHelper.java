@@ -8,12 +8,10 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Build;
-
 import androidx.core.app.NotificationCompat;
 
 import com.example.safe_v02.Agenda_de_eventos.MeusEventos;
 import com.example.safe_v02.R;
-
 
 public class NotificationHelper extends ContextWrapper {
 
@@ -42,12 +40,12 @@ public class NotificationHelper extends ContextWrapper {
     }
 
 
-    public NotificationCompat.Builder gerarNotificacao(String Titulo, String DataEHora) {
+    public NotificationCompat.Builder gerarNotificacao(String Titulo, String Descricao) {
         Intent activity_intent = new Intent(this, MeusEventos.class);
         PendingIntent content_intent =   PendingIntent.getActivity(this,0,activity_intent,0);
         return new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setContentTitle(Titulo)
-                .setContentText(DataEHora)
+                .setContentText(Descricao)
                 .setContentIntent(content_intent)
                 .setSmallIcon(R.drawable.logo_black);
     }

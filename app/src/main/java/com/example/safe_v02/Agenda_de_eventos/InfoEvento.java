@@ -51,8 +51,10 @@ public class InfoEvento extends AppCompatActivity {
       btnEditarEvento.setOnClickListener(new OnClickListener() {
          public void onClick(View view) {
             int idEvento = getIntent().getIntExtra("idEvento", -1);
+            int idalarme = getIntent().getIntExtra("idAlarme", 0);
             Intent intent = new Intent(InfoEvento.this, CadastrarEvento.class);
             intent.putExtra("editarEvento", idEvento);
+            intent.putExtra("idAlarme", idalarme);
             startActivity(intent);
          }
       });
