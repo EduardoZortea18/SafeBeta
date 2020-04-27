@@ -12,10 +12,10 @@ import java.util.Date;
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationHelper notificationHelper = new NotificationHelper(context);
-        NotificationCompat.Builder nb = notificationHelper.gerarNotificacao("Notificação","Tudo ok!!");
+        NotificationCompat.Builder nb = notificationHelper.gerarNotificacao(intent.getStringExtra("Titulo"),intent.getStringExtra("Descricao"));
 
-        int n = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
-        notificationHelper.getManager().notify(n, nb.build());
+        int id = intent.getIntExtra("idAlarme",-1);
+        notificationHelper.getManager().notify(id, nb.build());
         Log.d("AlarmManager","Notificado");
     }
 

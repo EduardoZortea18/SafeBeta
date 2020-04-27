@@ -67,7 +67,7 @@ public class MeusEventos extends AppCompatActivity {
                    int idEvento = eventos.get(position).getIdCriacao();
                    String titulo=eventos.get(position).getTituloEvento();
                    String descricao=eventos.get(position).getDataEvento()+" "+eventos.get(position).getHorarioevento();
-                   cancelarAlarme();
+                   cancelarAlarme(idEvento,titulo,descricao);
                    eventoDAO.excluir(eventos.get(position));
                    carregarEventos();
                    verificarEventtos();
@@ -110,10 +110,13 @@ public class MeusEventos extends AppCompatActivity {
       ListaDeEventos.setAdapter(adapter);
    }
 
-   private void cancelarAlarme() {
+   private void cancelarAlarme(int idEvento,String titulo,String descricao) {
       AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
       Intent intent = new Intent(this, AlertReceiver.class);
-      PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+      intent.putExtra("Titulo",titulo);
+      intent.putExtra("Descricao",descricao);
+      intent.putExtra("idAlarme",idEvento);
+      PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), idEvento, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
       try {
          alarmManager.cancel(pendingIntent);

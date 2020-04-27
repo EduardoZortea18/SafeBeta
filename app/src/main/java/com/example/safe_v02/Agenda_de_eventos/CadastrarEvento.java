@@ -161,7 +161,7 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
                   eventoDAO.atualizar(evento);
                } else {
                   eventoDAO.inserirEvento(evento);
-                  salvarAlarme(custom_calendar);
+                  salvarAlarme(custom_calendar,evento.getIdCriacao(),evento.getTituloEvento(),(evento.getDataEvento()+" "+evento.getHorarioevento()));
                }
 
                MeusEventos.adapter.notifyDataSetChanged();
@@ -230,10 +230,13 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
       spinnerMateriaevento.setAdapter(adapter);
    }
 
-   private void salvarAlarme(Calendar c) {
+   private void salvarAlarme(Calendar c,int idAlarme,String titulo,String descricao) {
       AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
       Intent intent = new Intent(this, AlertReceiver.class);
-      PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+      intent.putExtra("Titulo",titulo);
+      intent.putExtra("Descricao",descricao);
+      intent.putExtra("idAlarme",idAlarme);
+      PendingIntent pendingIntent = PendingIntent.getBroadcast(this, idAlarme, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
       if (c.before(Calendar.getInstance())) {
          c.add(Calendar.DATE, 1);
