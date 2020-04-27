@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -20,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.safe_v02.Notificacoes.AlertReceiver;
 import com.example.safe_v02.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
@@ -62,10 +64,13 @@ public class MeusEventos extends AppCompatActivity {
             builder.setNegativeButton("Não", (android.content.DialogInterface.OnClickListener)null);
             builder.setPositiveButton("Sim", new android.content.DialogInterface.OnClickListener() {
                public void onClick(DialogInterface dialog, int which) {
-                  cancelarAlarme(eventos.get(position).getId());
-                  eventoDAO.excluir(eventos.get(position));
-                  carregarEventos();
-                  verificarEventtos();
+                   int idEvento = eventos.get(position).getIdCriacao();
+                   String titulo=eventos.get(position).getTituloEvento();
+                   String descricao=eventos.get(position).getDataEvento()+" "+eventos.get(position).getHorarioevento();
+                   cancelarAlarme();
+                   eventoDAO.excluir(eventos.get(position));
+                   carregarEventos();
+                   verificarEventtos();
                }
             });
             builder.show();
@@ -105,13 +110,17 @@ public class MeusEventos extends AppCompatActivity {
       ListaDeEventos.setAdapter(adapter);
    }
 
+   private void cancelarAlarme() {
+      AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+      Intent intent = new Intent(this, AlertReceiver.class);
+      PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-   public void cancelarAlarme(int idEvento){
-      AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-      Intent intent = new Intent(this, AlarmManager.class);
-      PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), idEvento, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-      alarmManager.cancel(pendingIntent);
-      Toast.makeText(this, "Alarme cancelado do id "+idEvento, Toast.LENGTH_SHORT).show();
+      try {
+         alarmManager.cancel(pendingIntent);
+         Log.e("AlarmManager", "Cancelling all pending intents");
+      } catch (Exception e) {
+         Log.e("AlarmManager", "AlarmManager update was not canceled. " + e.toString());
+      }        Toast.makeText(this, "Alarme cancelado", Toast.LENGTH_SHORT).show();
    }
+
 }

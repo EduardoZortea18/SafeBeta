@@ -3,38 +3,20 @@ package com.example.safe_v02.Notificacoes;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-
+import android.util.Log;
 import androidx.core.app.NotificationCompat;
-
-import com.example.safe_v02.Agenda_de_eventos.Evento;
-import com.example.safe_v02.Agenda_de_eventos.EventoDAO;
-import com.example.safe_v02.Agenda_de_eventos.MeusEventos;
-
-import java.util.ArrayList;
 import java.util.Date;
 
-public class AlertReceiver extends BroadcastReceiver {
+
+    public class AlertReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationHelper notificationHelper = new NotificationHelper(context);
-        int idEvento = intent.getIntExtra("Idevento",-1);
-        NotificationCompat.Builder nb = notificationHelper.gerarNotificacao(intent.getStringExtra("Titulo"),intent.getStringExtra("DataEHora"));
+        NotificationCompat.Builder nb = notificationHelper.gerarNotificacao("Notificação","Tudo ok!!");
 
-        notificationHelper.getManager().notify(idEvento, nb.build());
-
+        int n = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+        notificationHelper.getManager().notify(n, nb.build());
+        Log.d("AlarmManager","Notificado");
     }
-
-//    public void excluirEvento(int Idevento){
-//        EventoDAO eventoDAO = new EventoDAO(this);
-//        ArrayList<Evento> eventos = new ArrayList<Evento>(eventoDAO.obterTodos());
-//
-//        for (int i=0;i<eventos.size();i++){
-//            if(eventos.get(i).getId()==Idevento){
-//                eventoDAO.excluir(eventos.get(i));
-//            }
-//        }
-//
-//    }
-
 
 }

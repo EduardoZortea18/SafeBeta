@@ -155,11 +155,13 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
                evento.setTipoEvento(tipo);
                evento.setMateriaEvento(materia);
                evento.setDescricao(descricao);
+               evento.setIdCriacao((int)System.currentTimeMillis());
+
                if (idEvento != -1) {
                   eventoDAO.atualizar(evento);
                } else {
                   eventoDAO.inserirEvento(evento);
-                  salvarAlarme(custom_calendar,evento.getId());
+                  salvarAlarme(custom_calendar);
                }
 
                MeusEventos.adapter.notifyDataSetChanged();
@@ -228,13 +230,10 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
       spinnerMateriaevento.setAdapter(adapter);
    }
 
-   private void salvarAlarme(Calendar c,int idEvento) {
-      AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+   private void salvarAlarme(Calendar c) {
+      AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
       Intent intent = new Intent(this, AlertReceiver.class);
-      intent.putExtra("Titulo",txtTituloEvento.getText().toString());
-      intent.putExtra("DataEHora",txtDataEvento.getText().toString()+" "+txtHoraEvento.getText().toString());
-      intent.putExtra("IdEvento",idEvento);
-      PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), idEvento, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+      PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
       if (c.before(Calendar.getInstance())) {
          c.add(Calendar.DATE, 1);
@@ -244,5 +243,6 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
       String horario = DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
       Toast.makeText(this, "Alarme salvo para às "+horario, Toast.LENGTH_SHORT).show();
    }
+
 
 }
