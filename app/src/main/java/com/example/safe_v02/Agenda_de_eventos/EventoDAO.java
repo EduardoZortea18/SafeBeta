@@ -51,7 +51,7 @@ public class EventoDAO {
 
    public ArrayList obterTodos() {
       ArrayList eventos = new ArrayList();
-      Cursor cursor = this.banco.query("eventos", new String[]{"id", "nome", "data", "tipo", "materia", "hora","descricao","idalarme"}, (String)null, (String[])null, (String)null, (String)null, (String)null);
+      Cursor cursor = this.banco.query("eventos", new String[]{"id", "nome", "data", "tipo", "materia", "hora","descricao","idAlarme"}, (String)null, (String[])null, (String)null, (String)null, (String)null);
 
       while(cursor.moveToNext()) {
          Evento evento = new Evento();

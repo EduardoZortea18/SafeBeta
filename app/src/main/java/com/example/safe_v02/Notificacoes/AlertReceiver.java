@@ -3,6 +3,7 @@ package com.example.safe_v02.Notificacoes;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 

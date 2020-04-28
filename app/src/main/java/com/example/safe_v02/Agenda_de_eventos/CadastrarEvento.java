@@ -91,12 +91,13 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
                     evento.setTipoEvento(tipo);
                     evento.setMateriaEvento(materia);
                     evento.setDescricao(descricao);
-                    evento.setIdAlarme((int)System.currentTimeMillis());
+                    evento.setIdAlarme((int) custom_calendar.getTimeInMillis());
 
                     if (idEvento != -1) {
                         eventoDAO.atualizar(evento);
                         int idAlarme = getIntent().getIntExtra("idAlarme",0);
-                        alarmManagerUtil.salvarAlarme(custom_calendar,idAlarme,evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
+                        alarmManagerUtil.cancelarAlarme(idAlarme,evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
+                        alarmManagerUtil.salvarAlarme(custom_calendar,evento.getIdAlarme(),evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
                     } else {
                         eventoDAO.inserirEvento(evento);
                         alarmManagerUtil.salvarAlarme(custom_calendar,evento.getIdAlarme(),evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
