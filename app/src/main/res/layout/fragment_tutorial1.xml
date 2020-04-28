@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtTutorialNome"
-        android:inputType="text"
+        android:inputType="textCapWords|textCapSentences|textPersonName"
         android:hint="Digite seu nome"
         android:layout_below="@id/txtTutorial1"
         android:layout_margin="10dp"/>
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtTutorialCurso"
-        android:inputType="text"
+        android:inputType="textCapWords|textCapSentences"
         android:hint="Digite o que você está cursando"
         android:layout_below="@id/txtTutorialEmail"
         android:layout_margin="10dp"/>
@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtTutorialInstituicao"
-        android:inputType="text"
+        android:inputType="textCapWords|textCapSentences"
         android:hint="Digite o nome da sua instituição de ensino"
         android:layout_below="@id/txtTutorialCurso"
         android:layout_margin="10dp"/>

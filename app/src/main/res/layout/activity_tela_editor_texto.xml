@@ -14,9 +14,7 @@
         android:background="@color/AzulMedio"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:title="SAFE"
-
         />
-
 
     <EditText
         android:id="@+id/txtNota"
@@ -27,7 +25,7 @@
         android:ems="10"
         android:gravity="top|left"
         android:hint="Digite sua anotação aqui"
-        android:inputType="textUri|textLongMessage|textMultiLine"
+        android:inputType="textUri|textLongMessage|textMultiLine|textCapWords|textCapSentences"
         android:textAlignment="viewStart" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

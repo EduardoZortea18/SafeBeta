@@ -58,6 +58,17 @@
         <item>Teorema de Pitágoras</item>
     </string-array>
 
+    <string-array name="array_notificacoes">
+        <item>15 minutos antes</item>
+        <item>30 minutos antes</item>
+        <item>1 hora antes</item>
+        <item>2 hora antes</item>
+        <item>4 hora antes</item>
+        <item>1 dia antes</item>
+        <item>2 dias antes</item>
+        <item>1 semana antes</item>
+    </string-array>
+
     <string name="Info_suporte">
         Aplicativo desenvolvido por:\n
         Eduardo Paulo Wagner;\n

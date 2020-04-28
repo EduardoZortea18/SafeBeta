@@ -1,8 +1,5 @@
 package com.example.safe_v02.Agenda_de_eventos;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +17,6 @@ import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.safe_v02.Notificacoes.AlarmManagerUtil;
-import com.example.safe_v02.Notificacoes.AlertReceiver;
 import com.example.safe_v02.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;

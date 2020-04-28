@@ -85,14 +85,16 @@ public static String nome="Nome de usuário",email="Email",curso="O que está cu
         alertDialog.setView(input);
 
         if (txtNome.equals(view)) {
-            input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+            input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME | InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
             input.setText(nome);
         } else if (txtemail.equals(view)) {
             input.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
             input.setText(email);
         } else if (txtCurso.equals(view)) {
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
             input.setText(curso);
         } else if (txtInstituicao.equals(view)) {
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
             input.setText(instituicao);
         }
 

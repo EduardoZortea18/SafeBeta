@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtTutorialNomeMateria"
+        android:inputType="textCapWords|textCapSentences"
         android:layout_below="@id/txtTutorial2"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
