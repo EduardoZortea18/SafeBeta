@@ -2,6 +2,7 @@ package com.example.safe_v02.Agenda_de_eventos;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.Dialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Context;
@@ -11,14 +12,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.widget.Toolbar;
@@ -33,19 +39,20 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnDateSetListener, OnTimeSetListener {
-   ImageButton botaoEscolherData;
-   ImageButton botaoEscolherHora;
+   ImageButton botaoEscolherData,botaoEscolherHora;
    FloatingActionButton btnSalvarEvento;
-   private EventoDAO eventoDAO;
-   Spinner spinnerMateriaevento;
-   Spinner spinnerTipoEvento;
+   EventoDAO eventoDAO;
+   Spinner spinnerMateriaevento,spinnerTipoEvento;
    Toolbar toolbar;
-   TextView txtDataEvento;
-   TextView txtHoraEvento;
-   EditText txtTituloEvento,txtDescricaoEvento;
+   TextView txtDataEvento,txtHoraEvento;
+   EditText txtTituloEvento,txtDescricaoEvento,txtNotificarAntes;
    Calendar custom_calendar = Calendar.getInstance();
+   RadioGroup rgAgenda;
+   int tipoNotificacao=0;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +65,26 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
         txtDataEvento = (TextView)findViewById(R.id.txtDataEvento);
         txtHoraEvento = (TextView)findViewById(R.id.txtHoraEvento);
         txtDescricaoEvento = (EditText)findViewById(R.id.txtDescricaoEvento);
+        txtNotificarAntes = (EditText)findViewById(R.id.txtNotificarAntes);
+
+        rgAgenda = (RadioGroup)findViewById(R.id.radioGroupAgenda);
+        rgAgenda.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.rbAgenda1:
+                        tipoNotificacao=0;
+                        break;
+                    case R.id.rbAgenda2:
+                        tipoNotificacao=1;
+                        break;
+                    case R.id.rbAgenda3:
+                        tipoNotificacao=2;
+                        break;
+                }
+            }
+        });
+
 
         eventoDAO = new EventoDAO(this);
         spinnerTipoEvento = (Spinner)findViewById(R.id.spinnerTipoEvento);
@@ -82,28 +109,48 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
                 String materia = spinnerMateriaevento.getSelectedItem().toString();
                 String descricao=txtDescricaoEvento.getText().toString();
 
-                if (data.length() > 0 && hora.length() > 0 && nome.length() > 0 && tipo.length() > 0 && materia != "Matéria" && tipo != "Tipo") {
-                    Evento evento = new Evento();
-                    AlarmManagerUtil alarmManagerUtil = new AlarmManagerUtil(CadastrarEvento.this);
-                    evento.setTituloEvento(nome);
-                    evento.setDataEvento(data);
-                    evento.setHorarioevento(hora);
-                    evento.setTipoEvento(tipo);
-                    evento.setMateriaEvento(materia);
-                    evento.setDescricao(descricao);
-                    evento.setIdAlarme((int) custom_calendar.getTimeInMillis());
 
-                    if (idEvento != -1) {
-                        eventoDAO.atualizar(evento);
-                        int idAlarme = getIntent().getIntExtra("idAlarme",0);
-                        alarmManagerUtil.cancelarAlarme(idAlarme,evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
-                        alarmManagerUtil.salvarAlarme(custom_calendar,evento.getIdAlarme(),evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
-                    } else {
-                        eventoDAO.inserirEvento(evento);
-                        alarmManagerUtil.salvarAlarme(custom_calendar,evento.getIdAlarme(),evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
+                if (data.length() > 0 && hora.length() > 0 && nome.length() > 0 && tipo.length() > 0 && materia != "Matéria" && tipo != "Tipo"&& txtNotificarAntes.getText().toString().length()>0) {
+                    int avisarAntes = Integer.parseInt(txtNotificarAntes.getText().toString());
+                    if(avisarAntes>0){
+                        AlarmManagerUtil alarmManagerUtil = new AlarmManagerUtil(CadastrarEvento.this);
+                        Evento evento = new Evento();
+                        evento.setTituloEvento(nome);
+                        evento.setDataEvento(data);
+                        evento.setHorarioevento(hora);
+                        evento.setTipoEvento(tipo);
+                        evento.setMateriaEvento(materia);
+                        evento.setDescricao(descricao);
+
+                        switch (tipoNotificacao){
+                            case 0:
+                                custom_calendar.add(Calendar.MINUTE,-avisarAntes);
+                                break;
+                            case 1:
+                                custom_calendar.add(Calendar.HOUR_OF_DAY,-avisarAntes);
+
+                                break;
+                            case 2:
+                                custom_calendar.add(Calendar.DAY_OF_MONTH,-avisarAntes);
+                                break;
+                        }
+
+                        evento.setIdAlarme((int) custom_calendar.getTimeInMillis());
+
+
+                        if (idEvento != -1) {
+                            eventoDAO.atualizar(evento);
+                            int idAlarme = getIntent().getIntExtra("idAlarme",0);
+                            alarmManagerUtil.cancelarAlarme(idAlarme,evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
+                            alarmManagerUtil.salvarAlarme(custom_calendar,evento.getIdAlarme(),evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
+                        } else {
+                            eventoDAO.inserirEvento(evento);
+                            alarmManagerUtil.salvarAlarme(custom_calendar,evento.getIdAlarme(),evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
+                        }
+                        finish();
                     }
-                    finish();
-                } else {
+                }
+                else {
                     Toast.makeText(getApplicationContext(), "Você deve preencher todos os campos para salvar o evento", 0).show();
                 }
             }

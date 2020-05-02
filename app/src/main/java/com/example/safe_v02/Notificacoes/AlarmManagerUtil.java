@@ -59,7 +59,6 @@ public class AlarmManagerUtil {
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(context, evento.getIdAlarme(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP, evento.getIdAlarme(), pendingIntent);
             }
-
         }
     }
 

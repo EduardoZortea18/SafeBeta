@@ -38,17 +38,18 @@
         android:orientation="horizontal">
 
         <Spinner
-            android:id="@+id/spinnerMateriaevento"
+            android:id="@+id/spinnerTipoEvento"
             style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="150dp"
             android:layout_height="50dp" />
 
         <Spinner
-            android:id="@+id/spinnerTipoEvento"
+            android:id="@+id/spinnerMateriaevento"
             style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_marginLeft="20dp"
             android:layout_width="150dp"
             android:layout_height="50dp" />
+
 
     </LinearLayout>
 
@@ -105,6 +106,47 @@
     </LinearLayout>
 
     <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNotificarAntes"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="10dp"
+        android:hint="Antecedência da notificação"
+        android:digits="0123456789"
+        android:layout_below="@id/linearLayoutAg3"
+        />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroupAgenda"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_below="@id/txtNotificarAntes">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbAgenda1"
+            android:text="Minutos"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbAgenda2"
+            android:text="Horas"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbAgenda3"
+            android:text="Dias"/>
+
+    </RadioGroup>
+
+    <EditText
         android:id="@+id/txtDescricaoEvento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -112,7 +154,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginHorizontal="10dp"
         android:inputType="textCapWords|textCapSentences"
-        android:layout_below="@id/linearLayoutAg3"
+        android:layout_below="@id/radioGroupAgenda"
         android:hint="Descrição( Opcional)"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

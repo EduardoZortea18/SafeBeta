@@ -17,7 +17,7 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
     private final ArrayList<Evento> eventos;
 
     public EventoAdapter(Context context, ArrayList<Evento> eventos) {
-        super(context, R.layout.linha_evento, eventos);
+        super(context, R.layout.layout_evento, eventos);
         this.context = context;
         this.eventos = eventos;
     }
@@ -27,7 +27,7 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.linha_evento, parent, false);
+        View rowView = inflater.inflate(R.layout.layout_evento, parent, false);
         TextView tituloEvevnto = (TextView) rowView.findViewById(R.id.TituloEvento);
         tituloEvevnto.setText(eventos.get(position).getTituloEvento());
         return rowView;
