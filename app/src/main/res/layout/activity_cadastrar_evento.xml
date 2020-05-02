@@ -112,7 +112,7 @@
         android:inputType="numberDecimal"
         android:layout_marginTop="15dp"
         android:layout_marginHorizontal="10dp"
-        android:hint="Antecedência da notificação"
+        android:hint="Antecedência da notificação( Valores de 1 à 59)"
         android:digits="0123456789"
         android:layout_below="@id/linearLayoutAg3"
         />

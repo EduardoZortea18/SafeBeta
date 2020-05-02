@@ -58,18 +58,22 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
         txtNotificarAntes = (EditText)findViewById(R.id.txtNotificarAntes);
 
         rgAgenda = (RadioGroup)findViewById(R.id.radioGroupAgenda);
+        rgAgenda.check(R.id.rbAgenda1);
         rgAgenda.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
                     case R.id.rbAgenda1:
                         tipoNotificacao=0;
+                        txtNotificarAntes.setHint("Antecedência da notificação( Valores de 1 à 59)");
                         break;
                     case R.id.rbAgenda2:
                         tipoNotificacao=1;
+                        txtNotificarAntes.setHint("Antecedência da notificação( Valores de 1 à 23)");
                         break;
                     case R.id.rbAgenda3:
                         tipoNotificacao=2;
+                        txtNotificarAntes.setHint("Antecedência da notificação( Valores de 1 à 7)");
                         break;
                 }
             }
@@ -92,7 +96,7 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
         btnSalvarEvento = (FloatingActionButton)findViewById(R.id.btnSalvarEvento);
         btnSalvarEvento.setOnClickListener(new android.view.View.OnClickListener() {
             public void onClick(View view) {
-                String nome = txtTituloEvento.getText().toString();
+                String titulo = txtTituloEvento.getText().toString();
                 String data = txtDataEvento.getText().toString();
                 String hora = txtHoraEvento.getText().toString();
                 String tipo = spinnerTipoEvento.getSelectedItem().toString();
@@ -100,12 +104,12 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
                 String descricao=txtDescricaoEvento.getText().toString();
 
 
-                if (data.length() > 0 && hora.length() > 0 && nome.length() > 0 && tipo.length() > 0 && materia != "Matéria" && tipo != "Tipo"&& txtNotificarAntes.getText().toString().length()>0) {
+                if (data.length() > 0 && hora.length()>0 && titulo.length()>0 && tipo.length()>0 && materia.equalsIgnoreCase("Matéria")==false && tipo.equalsIgnoreCase("Tipo")==false && txtNotificarAntes.getText().toString().length()>0) {
                     int avisarAntes = Integer.parseInt(txtNotificarAntes.getText().toString());
-                    if(avisarAntes>0){
+                    if((tipoNotificacao==0 && avisarAntes>0 && avisarAntes<=59) || (tipoNotificacao==1 && avisarAntes>0 && avisarAntes<=23) || (tipoNotificacao==2 && avisarAntes>0 && avisarAntes<=7)){
                         AlarmManagerUtil alarmManagerUtil = new AlarmManagerUtil(CadastrarEvento.this);
                         Evento evento = new Evento();
-                        evento.setTituloEvento(nome);
+                        evento.setTituloEvento(titulo);
                         evento.setDataEvento(data);
                         evento.setHorarioevento(hora);
                         evento.setTipoEvento(tipo);
@@ -138,6 +142,9 @@ public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnD
                             alarmManagerUtil.salvarAlarme(custom_calendar,evento.getIdAlarme(),evento.getTituloEvento(),(evento.getDataEvento()+" às "+evento.getHorarioevento()));
                         }
                         finish();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "Tempo de aviso de antecedência inválido. Por favor utilize valores corretos para continuar.", 0).show();
                     }
                 }
                 else {
