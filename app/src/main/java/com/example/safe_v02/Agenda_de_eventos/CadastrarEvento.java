@@ -1,37 +1,28 @@
 package com.example.safe_v02.Agenda_de_eventos;
 
-import android.app.AlarmManager;
 import android.app.DatePickerDialog.OnDateSetListener;
-import android.app.Dialog;
-import android.app.PendingIntent;
 import android.app.TimePickerDialog.OnTimeSetListener;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.widget.Toolbar;
 import com.example.safe_v02.Materias_e_notas.Materia;
 import com.example.safe_v02.Materias_e_notas.MateriaDAO;
 import com.example.safe_v02.Notificacoes.AlarmManagerUtil;
-import com.example.safe_v02.Notificacoes.AlertReceiver;
 import com.example.safe_v02.Pickers.DatePickerFragment;
 import com.example.safe_v02.Pickers.TimePickerFragment;
 import com.example.safe_v02.R;
@@ -39,7 +30,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class CadastrarEvento<Caldendar> extends AppCompatActivity implements OnDateSetListener, OnTimeSetListener {
    ImageButton botaoEscolherData,botaoEscolherHora;
